@@ -35,3 +35,9 @@ kasir, dan manager yang memliki tugas berbeda.
 </p>
 
 
+1. Transaksi -> Barang Keluar rename
+2. FIltering Data + Cetak PDF
+3. Stok mininmum (table) didashboard
+4. Setting + notifikasi hapus
+5. Forget password remove
+6. Radio select level in pageManager (Owner & Admin) 

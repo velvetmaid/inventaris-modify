@@ -27,7 +27,7 @@
 			}else{
 				$date  = date("Y-m-d");
 				$value = "'$transkode','$auth[kd_user]','$assoc1[jum]','$assoc[sub]','$date'";
-				$response = $pem->insert("table_transaksi",$value,"?page=strukTransaksi&id=$transkode");
+				$response = $pem->insert("table_transaksi",$value,"?page=struk&id=$transkode");
 				if ($response['response'] == "positive") {
 					unset($_SESSION['transaksi']);
 				}

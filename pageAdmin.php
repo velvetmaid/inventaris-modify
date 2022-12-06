@@ -253,7 +253,7 @@ if (isset($_GET['logout'])) {
                 case 'kasirPembayaran':
                     include "admin/kasirPembayaran.php";
                     break;
-                case 'strukTransaksi':
+                case 'struk':
                     include "admin/strukTransaksi.php";
                     break;
                 default:
@@ -354,9 +354,6 @@ if (isset($_GET['logout'])) {
                     }
                 });
             });
-
-
-
         })
     </script>
     <script>

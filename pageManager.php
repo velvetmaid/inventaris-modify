@@ -1,25 +1,47 @@
-<?php 
+<?php
 
-	include "config/controller.php";
-    $function = new lsp();
-    session_start();
+include "config/controller.php";
+$function = new lsp();
+session_start();
 
-    $auth = $function->AuthUser($_SESSION['username']);
+$auth = $function->AuthUser($_SESSION['username']);
 
 
-    $response = $function->sessionCheck();
-    if($response == "false"){
-        header("Location:index.php");
-    }
-    if(isset($_GET['logout'])){
-        $function->logout();
-    }
+$response = $function->sessionCheck();
+if ($response == "false") {
+    header("Location:index.php");
+}
+if (isset($_GET['logout'])) {
+    $function->logout();
+}
 
- ?>
+?>
 <!DOCTYPE html>
 <html>
+
 <head>
-	<!-- Required meta tags-->
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+
+    <link href="https://nightly.datatables.net/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+    <script src="https://nightly.datatables.net/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+    <link href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.colVis.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.colVis.min.js"></script>
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
+
+    <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="au theme template">
@@ -27,8 +49,8 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-	<title>Manager</title>
-	<!-- Fontfaces CSS-->
+    <title>Manager</title>
+    <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
@@ -52,11 +74,12 @@
     <link href="css/theme.css" rel="stylesheet" media="all">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 </head>
+
 <body>
 
-	<div class="page-wrapper">
-		<aside class="menu-sidebar2">
-			<div class="logo">
+    <div class="page-wrapper">
+        <aside class="menu-sidebar2">
+            <div class="logo">
                 <a href="#">
                     <img src="images/icon/logo-white.png" alt="Cool Admin" />
                 </a>
@@ -72,19 +95,19 @@
                     <ul class="list-unstyled navbar__list">
                         <li>
                             <a href="?page">
-                            <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
                             <a href="?page=kelPegawai">
-                            <i class="fas fa-users"></i>Kelola Pegawai</a>
+                                <i class="fas fa-users"></i>Kelola Pegawai</a>
                         </li>
                         <li>
                             <a href="?page=kelTransaksi">
-                            <i class="fas fa-shopping-basket"></i>Kelola Transaksi</a>
+                                <i class="fas fa-shopping-basket"></i>Kelola Transaksi</a>
                         </li>
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
-                            <i class="fas fa-archive"></i>Data Barang</a>
+                                <i class="fas fa-archive"></i>Data Barang</a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                 <li>
                                     <a href="?page=kelBarang">Semua Barang</a>
@@ -100,10 +123,10 @@
                     </ul>
                 </nav>
             </div>
-		</aside>
+        </aside>
 
-		<div class="page-container2">
-			<header class="header-desktop2 hd">
+        <div class="page-container2">
+            <header class="header-desktop2 hd">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="header-wrap2">
@@ -202,17 +225,17 @@
                     </div>
                     <nav class="navbar-sidebar2">
                         <ul class="list-unstyled navbar__list">
-                        	<li>
-                            	<a href="?page">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                        	</li>
-                        	<li>
-	                            <a href="?page=kelPegawai">
-	                            <i class="fas fa-users"></i>Kelola Pegawai</a>
-                        	</li>
+                            <li>
+                                <a href="?page">
+                                    <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                            </li>
+                            <li>
+                                <a href="?page=kelPegawai">
+                                    <i class="fas fa-users"></i>Kelola Pegawai</a>
+                            </li>
                             <li>
                                 <a href="?page=kelTransaksi">
-                                <i class="fas fa-shopping-basket"></i>Kelola Transaksi</a>
+                                    <i class="fas fa-shopping-basket"></i>Kelola Transaksi</a>
                             </li>
                             <li class="has-sub">
                                 <a class="js-arrow" href="#">
@@ -234,47 +257,51 @@
                 </div>
             </aside>
 
-			<?php 
+            <?php
 
-				@$page = $_GET['page'];
-				switch($page){
-					case 'kelPegawai':
-						include "manager/kelolaPegawai.php";
-						break;
-                    case 'profile':
-                        include "profile.php";
-                        break;
-                    case 'kelBarang':
-                        include "manager/viewManagerBarang.php";
-                        break;
-                    case 'viewBarangDetail':
-                        include "manager/viewBarangDetail.php";
-                        break;
-                    case 'periode':
-                        include "manager/BarangPeriode.php";
-                        break;
-                    case 'barangHabis':
-                        include "manager/BarangHabis.php";
-                        break;
-                    case 'kelTransaksi':
-                        include "manager/Transaksi.php";
-                        break;
-					default:
-						$page = "dashboard";
-						include "manager/dashboard.php";
-						break;
-				}
+            @$page = $_GET['page'];
+            switch ($page) {
+                case 'kelPegawai':
+                    include "manager/kelolaPegawai.php";
+                    break;
+                case 'profile':
+                    include "profile.php";
+                    break;
+                case 'kelBarang':
+                    include "manager/viewManagerBarang.php";
+                    break;
+                case 'viewBarangDetail':
+                    include "manager/viewBarangDetail.php";
+                    break;
+                case 'periode':
+                    include "manager/BarangPeriode.php";
+                    break;
+                case 'barangHabis':
+                    include "manager/BarangHabis.php";
+                    break;
+                case 'kelTransaksi':
+                    include "manager/Transaksi.php";
+                    break;
+                default:
+                    $page = "dashboard";
+                    include "manager/dashboard.php";
+                    break;
+            }
 
-			 ?>
+            ?>
 
-		</div>
+        </div>
 
-	</div>
+    </div>
 
-	<!-- Jquery JS-->
+    <!-- Jquery JS-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.13.1/b-2.3.3/b-colvis-2.3.3/b-html5-2.3.3/b-print-2.3.3/datatables.min.js"></script>
+
     <script src="vendor/jquery-3.2.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <!-- <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script> -->
     <!-- Bootstrap JS-->
     <script src="vendor/bootstrap-4.1/popper.min.js"></script>
     <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
@@ -303,70 +330,76 @@
     <script src="js/sweetalert.min.js"></script>
     <script src="js/bootstrap-datepicker.min.js"></script>
     <script>
-      $(document).ready(function(){
-          function preview(input){
-            if(input.files && input.files[0]){
-              var reader = new FileReader();
+        $(document).ready(function() {
+            function preview(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
 
-              reader.onload = function (e){
-                $('#pict').attr('src', e.target.result);
-              }
+                    reader.onload = function(e) {
+                        $('#pict').attr('src', e.target.result);
+                    }
 
-              reader.readAsDataURL(input.files[0]);
+                    reader.readAsDataURL(input.files[0]);
+                }
             }
-          }
-          $('#gambar').change(function(){
-            preview(this);
-          })
-      });
-    </script>
-    <script>
-      $(document).ready(function(){
-          function preview(input){
-            if(input.files && input.files[0]){
-              var reader = new FileReader();
-
-              reader.onload = function (e){
-                $('#pict2').attr('src', e.target.result);
-              }
-
-              reader.readAsDataURL(input.files[0]);
-            }
-          }
-          $('#gambar2').change(function(){
-            preview(this);
-          })
-      });
-    </script>
-    <script>
-      $(document).ready(function(){
-        $('#forLogout').click(function(e){
-          e.preventDefault();
-            swal({
-            title: "Logout",
-            text: "Yakin Logout?",
-            type: "info",
-            showCancelButton: true,
-            confirmButtonText: "Yes",
-            cancelButtonText: "No",
-            closeOnConfirm: false,
-            closeOnCancel: true
-          }, function(isConfirm) {
-            if (isConfirm) {
-              window.location.href="?logout";
-            }
-          });
+            $('#gambar').change(function() {
+                preview(this);
+            })
         });
-
-
-
-      })
     </script>
     <script>
         $(document).ready(function() {
-            $('#example').DataTable();
-        } );
+            function preview(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        $('#pict2').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            $('#gambar2').change(function() {
+                preview(this);
+            })
+        });
     </script>
-	<?php include "config/alert.php"; ?>
+    <script>
+        $(document).ready(function() {
+            $('#forLogout').click(function(e) {
+                e.preventDefault();
+                swal({
+                    title: "Logout",
+                    text: "Yakin Logout?",
+                    type: "info",
+                    showCancelButton: true,
+                    confirmButtonText: "Yes",
+                    cancelButtonText: "No",
+                    closeOnConfirm: false,
+                    closeOnCancel: true
+                }, function(isConfirm) {
+                    if (isConfirm) {
+                        window.location.href = "?logout";
+                    }
+                });
+            });
+
+
+
+        })
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable({
+                dom: 'Blfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+        });
+    </script>
+    <?php include "config/alert.php"; ?>
 </body>
+
 </html>

@@ -147,7 +147,7 @@ if (isset($_GET['logout'])) {
                                         </form>
                                     </div>
                                 </div>
-                                <div class="header-button-item has-noti js-item-menu">
+                                <!-- <div class="header-button-item has-noti js-item-menu">
                                     <i class="zmdi zmdi-notifications"></i>
                                     <div class="notifi-dropdown js-dropdown">
                                         <div class="notifi__title">
@@ -184,7 +184,7 @@ if (isset($_GET['logout'])) {
                                             <a href="#">All notifications</a>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="header-button-item mr-0 js-sidebar-btn">
                                     <i class="zmdi zmdi-menu"></i>
                                 </div>

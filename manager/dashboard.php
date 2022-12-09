@@ -4,9 +4,11 @@ $pegawai = $pg->selectCount("table_user", "kd_user");
 $barang  = $pg->selectCount("table_barang", "kd_barang");
 $berhasil = $pg->selectCount("table_transaksi", "kd_transaksi");
 $assoc1   = $pg->selectCount("table_transaksi", "jumlah_beli");
-$stokmin = mysqli_query($con, "SELECT * FROM table_barang WHERE stok_barang < 2"); //DATA KURANG DARI 5, 2 DATA KURANG DARI 5
-$jumlah_stokmin = mysqli_num_rows($stokmin);
+$stokmin = mysqli_query($con, "SELECT * FROM table_barang WHERE stok_barang < 5"); // Stok barang yang kurang dari 5
+$jumlah_stokmin = mysqli_num_rows($stokmin); // Hitung row data yang memiliki stok_barang kurang dari 5
+// $row = $jumlah_stokmin->fetch_assoc();
 ?>
+
 <section class="au-breadcrumb m-t-75">
     <div class="section__content section__content--p30">
         <div class="container-fluid">
@@ -58,16 +60,18 @@ $jumlah_stokmin = mysqli_num_rows($stokmin);
                         <div class="overview__inner">
                             <div class="overview-box clearfix">
                                 <div class="icon">
-                                    <i class="zmdi zmdi-shopping-cart"></i>
+                                    <i class="zmdi zmdi-chart"></i>
                                 </div>
                                 <div class="text">
-                                    <h2><?= $jumlah_stokmin; ?></h2>
-                                    <span>Barang</span>
+                                    <h2><?= $jumlah_stokmin ?></h2>
+                                    <span>Barang Min</span>
                                 </div>
                             </div>
                             <div class="overview-chart">
-                                <canvas id="widgetChart2"></canvas>
+                                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exModal">Lihat</button>
+                                <canvas id="widgetChart23"></canvas>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -111,3 +115,60 @@ $jumlah_stokmin = mysqli_num_rows($stokmin);
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5> -->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Semua Barang</h3>
+                                <br>
+                                <!-- <a href="manager/export.php" name="export" class="btn btn-success" target="_blank">Export Excel</a>
+                                <a href="manager/databarangfull.php" target="_blank" class="btn btn-info">Print</a> -->
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-hover table-bordered" id="sampleTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Kode barang</th>
+                                            <th>Nama barang</th>
+                                            <th>Harga</th>
+                                            <th>Sisa Stok</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $no = 1;
+                                        foreach ($stokmin as $ds) { ?>
+                                            <tr>
+                                                <td><?= $ds['kd_barang'] ?></td>
+                                                <td><?= $ds['nama_barang'] ?></td>
+                                                <td><?= number_format($ds['harga_barang']) ?></td>
+                                                <td><?= $ds['stok_barang'] ?></td>
+                                            </tr>
+                                        <?php $no++;
+                                        } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div> -->
+        </div>
+    </div>
+</div>
+<!-- End Modal -->

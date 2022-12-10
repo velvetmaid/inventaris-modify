@@ -1,6 +1,6 @@
 <?php 
 	$dt = new lsp();
-	$detail = $dt->selectWhere("detailBarang","kd_barang",$_GET['id']);
+	$detail = $dt->selectWhere("detailbarang","kd_barang",$_GET['id']);
     if ($_SESSION['level'] != "Admin") {
     header("location:../index.php");
     }
@@ -43,7 +43,7 @@
 	    						<td><?php echo $detail['merek']; ?></td>
 	    					</tr>
 	    					<tr>
-	    						<td>Distributor</td>
+	    						<td>Supplier</td>
 	    						<td>:</td>
 	    						<td><?php echo $detail['nama_distributor']; ?></td>
 	    					</tr>

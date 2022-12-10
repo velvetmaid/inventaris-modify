@@ -44,7 +44,7 @@
 	    						<td><?php echo $detail['merek']; ?></td>
 	    					</tr>
 	    					<tr>
-	    						<td>Distributor</td>
+	    						<td>Supplier</td>
 	    						<td>:</td>
 	    						<td><?php echo $detail['nama_distributor']; ?></td>
 	    					</tr>

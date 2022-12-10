@@ -79,7 +79,7 @@
                                 <li class="list-inline-item seprate">
                                     <span>/</span>
                                 </li>
-                                <li class="list-inline-item">Data Distributor</li>
+                                <li class="list-inline-item">Data Supplier</li>
                             </ul>
                         </div>
                     </div>
@@ -96,20 +96,20 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-header" >
-                            <strong class="card-title mb-3">Input Distributor</strong>
+                            <strong class="card-title mb-3">Input Supplier</strong>
                         </div>
                         <div class="card-body">
                             <form method="post">
                                 <div class="form-group">
-                                    <label for="">Kode distributor</label>
+                                    <label for="">Kode Supplier</label>
                                     <input type="text" class="form-control form-control-sm" name="kode_distributor" style="font-weight: bold; color: red;" value="<?php echo $autokode; ?>" readonly>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Nama distributor</label>
+                                    <label for="">Nama Supplier</label>
                                     <input type="text" class="form-control form-control-sm" name="nama_distributor" value="<?php echo @$editData['nama_distributor'] ?>">
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Nohp distributor</label>
+                                    <label for="">No. Hp Supplier</label>
                                     <input type="text" class="form-control form-control-sm" name="nohp_distributor" value="<?php echo @$editData['no_telp']; ?>">
                                 </div>
                                 <div class="form-group">
@@ -131,14 +131,14 @@
                     <div class="col-md-8">
                         <div class="card">
                         <div class="card-header">
-                            <strong class="card-title mb-3">Data Distributor</strong>
+                            <strong class="card-title mb-3">Data Supplier</strong>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                <table id="example" class="table table-borderless table-striped table-earning">
                                    <thead>
                                        <tr>
-                                            <th>Kode distributor</th>
+                                            <th>Kode Supplier</th>
                                             <th>Nama</th>
                                             <th>Nohp</th>
                                             <th>Alamat</th>

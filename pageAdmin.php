@@ -86,7 +86,7 @@ if (isset($_GET['logout'])) {
                         </li>
                         <li>
                             <a href="?page=viewDistributor">
-                                <i class="fas fa-users"></i>Distributor</a>
+                                <i class="fas fa-users"></i>Supplier</a>
                         </li>
                         <li>
                             <a href="?page=viewMerek">
@@ -211,7 +211,7 @@ if (isset($_GET['logout'])) {
                             </li>
                             <li>
                                 <a href="?page=viewDistributor">
-                                    <i class="fas fa-users"></i>Distributor</a>
+                                    <i class="fas fa-users"></i>Supplier</a>
                             </li>
                             <li>
                                 <a href="?page=viewMerek">

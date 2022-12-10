@@ -77,9 +77,9 @@
 												</select>
 											</div>
 											<div class="form-group">
-												<label for="">Distributor</label>
+												<label for="">Supplier</label>
 												<select name="distributor" class="form-control">
-													<option value=" ">Pilih distributor</option>
+													<option value=" ">Pilih Supplier</option>
 													<?php foreach($getDistr as $dr) { ?>
 													<?php if ($dr['kd_distributor'] == $data['kd_distributor']){ ?>
 													<option value="<?= $dr['kd_distributor'] ?>" selected><?= $dr['nama_distributor'] ?></option>

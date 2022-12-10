@@ -24,7 +24,7 @@
 				                    <th>Kode barang</th>
 				                    <th>Nama barang</th>
 				                    <th>Merek</th>
-				                    <th>Distributor</th>
+				                    <th>Supplier</th>
 				                    <th>Tanggal Masuk</th>
 				                    <th>Harga</th>
 				                    <th>Stok</th>

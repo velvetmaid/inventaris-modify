@@ -67,9 +67,9 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Distributor</label>
+                                    <label for="">Supplier</label>
                                     <select name="distributor" class="form-control">
-                                        <option value=" ">Pilih distributor</option>
+                                        <option value=" ">Pilih Supplier</option>
                                         <?php foreach($getDistr as $dr) { ?>
                                         <option value="<?= $dr['kd_distributor'] ?>"><?= $dr['nama_distributor'] ?></option>
                                         <?php } ?>

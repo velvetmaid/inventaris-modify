@@ -53,7 +53,7 @@ if ($_SESSION['level'] != "Admin") {
                 </div>
                 <!-- End -->
                 <div class="row">
-                    <div class="col-sm-6 col-lg-4">
+                    <!-- <div class="col-sm-6 col-lg-4">
                         <div class="overview-item overview-item--c3">
                             <div class="overview__inner">
                                 <div class="overview-box clearfix">
@@ -70,7 +70,7 @@ if ($_SESSION['level'] != "Admin") {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="col-sm-6 col-lg-4">
                         <div class="overview-item overview-item--c4">
                             <div class="overview__inner">
@@ -80,7 +80,7 @@ if ($_SESSION['level'] != "Admin") {
                                     </div>
                                     <div class="text">
                                         <h2><?= $assoc1['count']; ?></h2>
-                                        <span>Barang Terjual</span>
+                                        <span>Barang Keluar</span>
                                     </div>
                                 </div>
                                 <div class="overview-chart">
@@ -98,7 +98,7 @@ if ($_SESSION['level'] != "Admin") {
                                     </div>
                                     <div class="text">
                                         <h2><?= $bar['count'] ?></h2>
-                                        <span>Barang</span>
+                                        <span>Jumlah Barang</span>
                                     </div>
                                 </div>
                                 <div class="overview-chart">
@@ -134,7 +134,7 @@ if ($_SESSION['level'] != "Admin") {
                                     </div>
                                     <div class="text">
                                         <h2><?= $dis; ?></h2>
-                                        <span>Distributor</span>
+                                        <span>Supplier</span>
                                     </div>
                                 </div>
                                 <div class="overview-chart">

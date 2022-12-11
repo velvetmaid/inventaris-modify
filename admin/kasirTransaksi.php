@@ -74,7 +74,7 @@
                         <form method="post">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label for="">Kode Transaksi</label>
+                                    <label for="">Kode Barang Keluar</label>
                                     <input style="font-weight: bold; color: red;" type="text" class="form-control" value="<?= $transkode; ?>" readonly name="kd_transaksi">
                                 </div>
                                 <div class="col-md-6">

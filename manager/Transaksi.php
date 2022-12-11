@@ -56,7 +56,7 @@ if (isset($_GET['id'])) {
                         <div class="col-sm-6">
                               <div class="card cari">
                                     <div class="card-header">
-                                          <h4>Cari Transaksi</h4>
+                                          <h4>Cari Barang Keluar</h4>
                                     </div>
                                     <div class="card-body">
                                           <form method="post">
@@ -80,7 +80,7 @@ if (isset($_GET['id'])) {
                                     <p>Transkom</p>
                                     <hr>
                                     <div class="row">
-                                          <div class="col-sm-6">Kode Transaksi : <?php echo $id ?></div>
+                                          <div class="col-sm-6">Kode Barang Keluar : <?php echo $id ?></div>
                                           <div class="col-sm-6">
                                                 <p class="text-right"><span><?php echo "Tanggal Cetak : " . date("Y-m-d"); ?></p>
                                           </div>
@@ -124,7 +124,7 @@ if (isset($_GET['id'])) {
                                     <a href="#" class="btn btn-primary" onclick="window.print();">Print</a>
                               <?php endif ?>
                               <?php if (!isset($_GET['id'])) : ?>
-                                    <h4>Data Semua Transaksi</h4>
+                                    <h4>Data Semua Barang Keluar</h4>
                                     <p>Transcom</p>
                                     <hr>
                                     <p class="text-right"><?php echo "Tanggal Cetak : " . date("Y-m-d"); ?></p>
@@ -132,7 +132,7 @@ if (isset($_GET['id'])) {
                                     <table id="example" class="table table-borderless table-striped table-earning">
                                           <thead>
                                                 <tr>
-                                                      <th>Kode sTransaksi</th>
+                                                      <th>Kode Barang Keluar</th>
                                                       <th>Nama Kasir</th>
                                                       <th>Jumlah Beli</th>
                                                       <th>Total Harga</th>
@@ -145,7 +145,10 @@ if (isset($_GET['id'])) {
                                                             <td><?= $dts['kd_transaksi'] ?></td>
                                                             <td><?= $dts['nama_user'] ?></td>
                                                             <td><?= $dts['jumlah_beli'] ?></td>
-                                                            <td><?= "Rp." . number_format($dts['total_harga']) . ",-" ?></td>
+                                                            <td><?= number_format($dts['total_harga'])?></td>
+                                                            <!-- <td> -->
+                                                                  <!-- <?= "Rp." . number_format($dts['total_harga']) . ",-" ?> -->
+                                                            <!-- </td> -->
                                                             <td><?= $dts['tanggal_beli'] ?></td>
                                                       </tr>
                                                 <?php endforeach ?>
@@ -157,7 +160,7 @@ if (isset($_GET['id'])) {
                                                 <td colspan="2"></td>
                                                 <td>Grand Total</td>
                                                 <td><?php echo "Rp." . number_format($grand['sum']) . ",-" ?></td>
-                                                <td></td>
+                                                <!-- <td></td> -->
                                           </tr>
                                     </table>
                                     <script>
@@ -178,7 +181,7 @@ if (isset($_GET['id'])) {
       <div class="modal-dialog modal-md" role="document">
             <div class="modal-content">
                   <div class="modal-header">
-                        <h3>Pilih Transaksi</h3>
+                        <h3>Pilih Barang Keluar</h3>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                         </button>
@@ -187,7 +190,7 @@ if (isset($_GET['id'])) {
                         <table class="table table-hover table-bordered" id="example" width="100%;" align="center">
                               <thead>
                                     <tr>
-                                          <td>Kode Transaksi</td>
+                                          <td>Kode Barang Keluar</td>
                                           <td>Nama Penjual</td>
                                           <td>Jumlah Beli</td>
                                           <td>Total Harga</td>

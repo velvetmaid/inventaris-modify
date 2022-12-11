@@ -17,6 +17,10 @@ $jumlah_barang = $struk->selectSumWhere("transaksi", "jumlah", "kd_transaksi='$i
 			align-content: center;
 		}
 
+		header {
+			display: none;
+		}
+
 		.ds {
 			display: none;
 		}
@@ -44,7 +48,7 @@ $jumlah_barang = $struk->selectSumWhere("transaksi", "jumlah", "kd_transaksi='$i
 						</div>
 						<div class="card-body">
 							<div class="row">
-								<div class="col-sm-6">Kode Transaksi : <?php echo $id ?></div>
+								<div class="col-sm-6">Kode Barang Keluar : <?php echo $id ?></div>
 								<div class="col-sm-6">
 									<p class="text-right"><span><?php echo "Tanggal Cetak : " . date("Y-m-d"); ?></p>
 								</div>

@@ -78,7 +78,7 @@ if (isset($_GET['logout'])) {
                         </li>
                         <li>
                             <a href="?page=kasirTransaksi">
-                                <i class="fas fa-shopping-basket"></i>Transaksi</a>
+                                <i class="fas fa-shopping-basket"></i>Barang Keluar</a>
                         </li>
                         <li>
                             <a href="?page=viewBarang">
@@ -119,7 +119,7 @@ if (isset($_GET['logout'])) {
                                         </form>
                                     </div>
                                 </div>
-                                <div class="header-button-item has-noti js-item-menu">
+                                <!-- <div class="header-button-item has-noti js-item-menu">
                                     <i class="zmdi zmdi-notifications"></i>
                                     <div class="notifi-dropdown js-dropdown">
                                         <div class="notifi__title">
@@ -156,7 +156,7 @@ if (isset($_GET['logout'])) {
                                             <a href="#">All notifications</a>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="header-button-item mr-0 js-sidebar-btn">
                                     <i class="zmdi zmdi-menu"></i>
                                 </div>
@@ -166,10 +166,10 @@ if (isset($_GET['logout'])) {
                                             <a href="?page=profile">
                                                 <i class="zmdi zmdi-account"></i>Account</a>
                                         </div>
-                                        <div class="account-dropdown__item">
+                                        <!-- <div class="account-dropdown__item">
                                             <a href="#">
                                                 <i class="zmdi zmdi-settings"></i>Setting</a>
-                                        </div>
+                                        </div> -->
                                         <div class="account-dropdown__item">
                                             <a href="homepage.php?logout" id="forLogout">
                                                 <i class="zmdi zmdi-power"></i>Logout</a>
@@ -203,7 +203,7 @@ if (isset($_GET['logout'])) {
                             </li>
                             <li>
                                 <a href="?page=kasirTransaksi">
-                                    <i class="fas fa-shopping-basket"></i>Transaksi</a>
+                                    <i class="fas fa-shopping-basket"></i>Barang Keluar</a>
                             </li>
                             <li>
                                 <a href="?page=viewBarang">

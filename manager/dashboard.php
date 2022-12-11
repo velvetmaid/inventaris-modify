@@ -80,11 +80,11 @@ $jumlah_stokmin = mysqli_num_rows($stokmin); // Hitung row data yang memiliki st
                         <div class="overview__inner">
                             <div class="overview-box clearfix">
                                 <div class="icon">
-                                    <i class="zmdi zmdi-money-box"></i>
+                                    <i class="zmdi zmdi-case-check"></i>
                                 </div>
                                 <div class="text">
                                     <h2><?= $berhasil['count'] ?></h2>
-                                    <span>Transaksi</span>
+                                    <span>Barang Keluar</span>
                                 </div>
                             </div>
                             <div class="overview-chart">
@@ -93,7 +93,7 @@ $jumlah_stokmin = mysqli_num_rows($stokmin); // Hitung row data yang memiliki st
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-3">
+                <!-- <div class="col-sm-6 col-lg-3">
                     <div class="overview-item overview-item--c4">
                         <div class="overview__inner">
                             <div class="overview-box clearfix">
@@ -110,7 +110,7 @@ $jumlah_stokmin = mysqli_num_rows($stokmin); // Hitung row data yang memiliki st
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

@@ -44,7 +44,7 @@ if ($_SESSION['level'] != "Admin") {
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header bg-primary">
-                            <h3 style="color: white;">Mulai Transaksi</h3>
+                            <h3 style="color: white;">Pembukuan</h3>
                         </div>
                         <div class="card-body">
                             <a href="?page=kasirTransaksi" class="btn btn-primary">Disini !</a>
@@ -62,7 +62,7 @@ if ($_SESSION['level'] != "Admin") {
                                     </div>
                                     <div class="text">
                                         <h2><?= $berhasil['count'] ?></h2>
-                                        <span>Transaksi</span>
+                                        <span>Barang Keluar</span>
                                     </div>
                                 </div>
                                 <div class="overview-chart">

@@ -103,7 +103,7 @@ if (isset($_GET['logout'])) {
                         </li>
                         <li>
                             <a href="?page=kelTransaksi">
-                                <i class="fas fa-shopping-basket"></i>Kelola Transaksi</a>
+                                <i class="fas fa-shopping-basket"></i>Kelola Barang Keluar</a>
                         </li>
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
@@ -235,7 +235,7 @@ if (isset($_GET['logout'])) {
                             </li>
                             <li>
                                 <a href="?page=kelTransaksi">
-                                    <i class="fas fa-shopping-basket"></i>Kelola Transaksi</a>
+                                    <i class="fas fa-shopping-basket"></i>Kelola Barang Keluar</a>
                             </li>
                             <li class="has-sub">
                                 <a class="js-arrow" href="#">

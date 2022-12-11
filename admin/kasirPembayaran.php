@@ -48,7 +48,7 @@
             				<form method="post">
 								<div class="col-sm-12">
 									<div class="form-group">
-										<label for="">Kode Transaksi</label>
+										<label for="">Kode Barang Keluar</label>
 										<input type="text" class="form-control" name="autokode" id="autokode" value="<?php echo $transkode ?>" readonly>
 									</div>
 									<div class="form-group">
@@ -63,7 +63,7 @@
 										<label for="">Kembalian</label>
 										<input type="text" class="form-control" name="kem" id="kem" readonly="">
 									</div>
-									<button class="btn btn-primary" name="selesaiGet"><i class="fa fa-cart-plus"></i> Selesaikan Transaksi </button>
+									<button class="btn btn-primary" name="selesaiGet"><i class="fa fa-cart-plus"></i> Selesaikan Barang Keluar </button>
 									<a href="?page=kasirTransaksi" class="btn btn-danger"><i class="fa fa-repeat"></i> Kembali</a>
 								</div>
 							</form>

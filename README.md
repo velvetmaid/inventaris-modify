@@ -34,10 +34,16 @@ kasir, dan manager yang memliki tugas berbeda.
   <img src="https://user-images.githubusercontent.com/33746018/56844626-71557d80-68dd-11e9-8d7a-4a2a00f43d84.PNG" align="middle" />
 </p>
 
-
-1. Transaksi -> Barang Keluar rename
-2. FIltering Data + Cetak PDF
-3. Stok mininmum (table) didashboard
-4. Setting + notifikasi hapus
-5. Forget password remove
-6. Radio select level in pageManager (Owner & Admin) 
+### PROGRESS
+1. Transaksi rename barang keluar | [DONE]
+2. Sort table (jQuery plugin dataTables) + Cetak PDF | [DONE]
+3. Stok mininmum (table) didashboard | [DONE]
+4. Remove forget password, setting & notifikasi | [DONE]
+5. Option select level in pageManager (Owner & Admin) | [DONE]
+6. Tambah barang masuk | [PAUSED]
+7. Rename merek -> jenis barang | [DONE]
+8. All modul except kelolaPegawa(Admin) | [DONE]
+9. Distributor tambah opsi delete | [DONE]
+10. Kelola pegawai tambah opsi edit | [CANCEL]
+11. Data Barang -> Catatan barang masuk (tidak bisa diubah) tidak ada CRUD | [PAUSED]
+12. Data Barang Masuk ada CRUD | [PAUSED] 

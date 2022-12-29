@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Dashboard Admin</title>
+    <title>Dashboard Manager</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,7 +38,7 @@
                   <tr>
                     <th>Kode barang</th>
                     <th>Nama barang</th>
-                    <th>Merek</th>
+                    <th>Jenis Barang</th>
                     <th>Supplier</th>
                     <th>Tanggal Masuk</th>
                     <th>Harga</th>

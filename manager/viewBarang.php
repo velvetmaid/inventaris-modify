@@ -1,13 +1,31 @@
 <?php
 $qb = new lsp();
 $dataB = $qb->select("detailbarang");
-if ($_SESSION['level'] != "Admin") {
+if ($_SESSION['level'] != "Manager") {
     header("location:../index.php");
 }
 if (isset($_GET['delete'])) {
     $response = $qb->delete("table_barang", "kd_barang", $_GET['id'], "?page=viewBarang");
 }
 ?>
+
+<style>
+    @media print {
+        .btn,
+        .au-breadcrumb-content,
+        .au-breadcrumb m-t-75,
+        .zmdi-account-calendar,
+        .dataTables_length,
+        .dataTables_filter,
+        .dataTables_info,
+        .dataTables_paginate,
+        .hd,
+        .action {
+            display: none;
+        }
+    }
+</style>
+ 
 <section class="au-breadcrumb m-t-75">
     <div class="section__content section__content--p30">
         <div class="container-fluid">
@@ -46,7 +64,8 @@ if (isset($_GET['delete'])) {
                         </div>
                         <div class="card-body">
                             <a href="?page=addBarang" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Barang</a>
-                            </button>
+                            <!-- <a href="?page=addStokBarang" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Stok Barang</a> -->
+                            <button class="btn btn-info" onclick="window.print()">Print</button>
                             <br>
                             <br>
                             <div class="table-responsive">
@@ -55,12 +74,12 @@ if (isset($_GET['delete'])) {
                                         <tr>
                                             <th>Kode barang</th>
                                             <th>Nama barang</th>
-                                            <th>Jenis  Barang</th>
+                                            <th>Jenis Barang</th>
                                             <th>Supplier</th>
-                                            <th>Tanggal Masuk</th>
+                                            <!-- <th>Tanggal Masuk</th> -->
                                             <th>Harga</th>
                                             <th>Stok</th>
-                                            <th>Action</th>
+                                            <th class="action">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -73,16 +92,20 @@ if (isset($_GET['delete'])) {
                                                 <td><?= $ds['nama_barang'] ?></td>
                                                 <td><?= $ds['merek'] ?></td>
                                                 <td><?= $ds['nama_distributor'] ?></td>
-                                                <td><?= $ds['tanggal_masuk'] ?></td>
+                                                <!-- <td><?= $ds['tanggal_masuk'] ?></td> -->
                                                 <td><?= number_format($ds['harga_barang']) ?></td>
                                                 <td><?= $ds['stok_barang'] ?></td>
-                                                <td class="text-center">
+                                                <td class="action text-center">
                                                     <div class="btn-group">
-                                                        <a href="?page=viewBarangDetail&id=<?php echo $ds['kd_barang'] ?>" data-toggle="tooltip" data-placement="top" title="Detail" class="btn btn-warning"><i class="fa fa-search"></i></a>
+
+                                                        <a href="?page=addStokBarang&id=<?= $ds['kd_barang'] ?>" data-toggle="tooltip" data-placement="top" title="Add Stock" class="btn btn-success"><i class="fa fa-plus"></i></a>
+
+                                                        <a href="?page=viewBarangDetail1&id=<?= $ds['kd_barang'] ?>" data-toggle="tooltip" data-placement="top" title="Detail" class="btn btn-warning"><i class="fa fa-search"></i></a>
+
                                                         <a href="?page=viewBarangEdit&edit&id=<?= $ds['kd_barang'] ?>" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-info"><i class="fa fa-edit"></i></a>
-                                                        <button data-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-danger">
-                                                            <i class="fa fa-trash" id="btdelete<?php echo $no; ?>"></i>
-                                                        </button>
+
+                                                        <a data-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-danger"><i class="fa fa-trash" style="color: white;" id="btdelete<?php echo $no; ?>"></i></a>
+                                                        </a>
                                                     </div>
                                                 </td>
                                             </tr>

@@ -4,6 +4,10 @@ $pegawai = $pg->selectCount("table_user", "kd_user");
 $barang  = $pg->selectCount("table_barang", "kd_barang");
 $berhasil = $pg->selectCount("table_transaksi", "kd_transaksi");
 $assoc1   = $pg->selectCount("table_transaksi", "jumlah_beli");
+$dis  = $pg->getCountRows("table_distributor");
+$mer  = $pg->getCountRows("table_merek");
+$bar  = $pg->selectCount("table_barang", "kd_barang");
+$pegawai = $pg->selectCount("table_user", "kd_user");
 $stokmin = mysqli_query($con, "SELECT * FROM table_barang WHERE stok_barang < 5"); // Stok barang yang kurang dari 5
 $jumlah_stokmin = mysqli_num_rows($stokmin); // Hitung row data yang memiliki stok_barang kurang dari 5
 // $row = $jumlah_stokmin->fetch_assoc();
@@ -37,7 +41,19 @@ $jumlah_stokmin = mysqli_num_rows($stokmin); // Hitung row data yang memiliki st
     <div class="section__content section__content--p30">
         <div class="container-fluid">
             <div class="row" style="margin-top: -30px;">
-                <div class="col-sm-6 col-lg-3">
+                <!-- Pembukuan Teks-->
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header bg-primary">
+                            <h3 style="color: white;">Pembukuan</h3>
+                        </div>
+                        <div class="card-body">
+                            <a href="?page=kasirTransaksi" class="btn btn-primary">Disini !</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End -->
+                <div class="col-sm-6 col-lg-4">
                     <div class="overview-item overview-item--c1">
                         <div class="overview__inner">
                             <div class="overview-box clearfix">
@@ -50,12 +66,66 @@ $jumlah_stokmin = mysqli_num_rows($stokmin); // Hitung row data yang memiliki st
                                 </div>
                             </div>
                             <div class="overview-chart">
-                                <canvas id="widgetChart1"></canvas>
+                                <!-- <canvas id="widgetChart1"></canvas> -->
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-3">
+                <div class="col-sm-6 col-lg-4">
+                    <div class="overview-item overview-item--c3">
+                        <div class="overview__inner">
+                            <div class="overview-box clearfix">
+                                <div class="icon">
+                                    <i class="zmdi zmdi-shopping-cart"></i>
+                                </div>
+                                <div class="text">
+                                    <h2><?= $bar['count'] ?></h2>
+                                    <span>Jumlah Barang</span>
+                                </div>
+                            </div>
+                            <div class="overview-chart">
+                                <!-- <canvas id="widgetChart2"></canvas> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="overview-item overview-item--c2">
+                        <div class="overview__inner">
+                            <div class="overview-box clearfix">
+                                <div class="icon">
+                                    <i class="zmdi zmdi-calendar-note"></i>
+                                </div>
+                                <div class="text">
+                                    <h2><?= $mer; ?></h2>
+                                    <span>Jenis Barang</span>
+                                </div>
+                            </div>
+                            <div class="overview-chart">
+                                <!-- <canvas id="widgetChart3"></canvas> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="overview-item overview-item--c3">
+                        <div class="overview__inner">
+                            <div class="overview-box clearfix">
+                                <div class="icon">
+                                    <i class="zmdi zmdi-account-o"></i>
+                                </div>
+                                <div class="text">
+                                    <h2><?= $dis; ?></h2>
+                                    <span>Supplier</span>
+                                </div>
+                            </div>
+                            <div class="overview-chart">
+                                <!-- <canvas id="widgetChart3"></canvas> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
                     <div class="overview-item overview-item--c2">
                         <div class="overview__inner">
                             <div class="overview-box clearfix">
@@ -69,13 +139,13 @@ $jumlah_stokmin = mysqli_num_rows($stokmin); // Hitung row data yang memiliki st
                             </div>
                             <div class="overview-chart">
                                 <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exModal">Lihat</button>
-                                <canvas id="widgetChart23"></canvas>
+                                <!-- <canvas id="widgetChart23"></canvas> -->
                             </div>
 
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-3">
+                <div class="col-sm-6 col-lg-4">
                     <div class="overview-item overview-item--c3">
                         <div class="overview__inner">
                             <div class="overview-box clearfix">
@@ -88,12 +158,12 @@ $jumlah_stokmin = mysqli_num_rows($stokmin); // Hitung row data yang memiliki st
                                 </div>
                             </div>
                             <div class="overview-chart">
-                                <canvas id="widgetChart3"></canvas>
+                                <!-- <canvas id="widgetChart3"></canvas> -->
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- <div class="col-sm-6 col-lg-3">
+                <!-- <div class="col-sm-6 col-lg-4">
                     <div class="overview-item overview-item--c4">
                         <div class="overview__inner">
                             <div class="overview-box clearfix">

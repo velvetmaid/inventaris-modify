@@ -40,8 +40,8 @@ if ($_SESSION['level'] != "Admin") {
     <div class="section__content section__content--p30">
         <div class="container-fluid">
             <div class="row" style="margin-top: -30px;">
-                <!-- Transaksi Teks-->
-                <div class="col-md-6">
+                <!-- Pembukuan Teks-->
+                <div class="col-md-12">
                     <div class="card">
                         <div class="card-header bg-primary">
                             <h3 style="color: white;">Pembukuan</h3>
@@ -84,7 +84,7 @@ if ($_SESSION['level'] != "Admin") {
                                     </div>
                                 </div>
                                 <div class="overview-chart">
-                                    <canvas id="widgetChart4"></canvas>
+                                    <!-- <canvas id="widgetChart4"></canvas> -->
                                 </div>
                             </div>
                         </div>
@@ -102,7 +102,7 @@ if ($_SESSION['level'] != "Admin") {
                                     </div>
                                 </div>
                                 <div class="overview-chart">
-                                    <canvas id="widgetChart1"></canvas>
+                                    <!-- <canvas id="widgetChart1"></canvas> -->
                                 </div>
                             </div>
                         </div>
@@ -116,11 +116,11 @@ if ($_SESSION['level'] != "Admin") {
                                     </div>
                                     <div class="text">
                                         <h2><?= $mer; ?></h2>
-                                        <span>Merek</span>
+                                        <span>Jenis Barang</span>
                                     </div>
                                 </div>
                                 <div class="overview-chart">
-                                    <canvas id="widgetChart2"></canvas>
+                                    <!-- <canvas id="widgetChart2"></canvas> -->
                                 </div>
                             </div>
                         </div>
@@ -138,7 +138,7 @@ if ($_SESSION['level'] != "Admin") {
                                     </div>
                                 </div>
                                 <div class="overview-chart">
-                                    <canvas id="widgetChart3"></canvas>
+                                    <!-- <canvas id="widgetChart3"></canvas> -->
                                 </div>
                             </div>
                         </div>

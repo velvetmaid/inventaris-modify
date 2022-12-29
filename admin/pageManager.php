@@ -99,7 +99,7 @@ if (isset($_GET['logout'])) {
                         </li>
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="fa fa-chevron-down"></i>Data Barang</a>
+                                <i class="fas fa-archive"></i>Data Barang</a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                 <li>
                                     <a href="?page=kelBarang">Semua Barang</a>
@@ -243,7 +243,7 @@ if (isset($_GET['logout'])) {
                             </li>
                             <li class="has-sub">
                                 <a class="js-arrow" href="#">
-                                    <i class="fa fa-chevron-down"></i>Data Barang</a>
+                                    <i class="fas fa-archive"></i>Data Barang</a>
                                 <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                     <li>
                                         <a href="?page=kelBarang">Semua Barang</a>
@@ -306,9 +306,6 @@ if (isset($_GET['logout'])) {
                 case 'viewBarang':
                     include "manager/viewBarang.php";
                     break;
-                case 'addStokBarang':
-                    include "manager/addStokBarang.php";
-                    break;
                 case 'viewDistributor':
                     include "manager/viewDistributor.php";
                     break;
@@ -320,9 +317,6 @@ if (isset($_GET['logout'])) {
                     break;
                 case 'viewBarangDetail':
                     include "manager/viewBarangDetail.php";
-                    break;
-                case 'viewBarangDetail1':
-                    include "manager/viewBarangDetail1.php";
                     break;
                 case 'viewBarangEdit':
                     include "manager/viewBarangEdit.php";

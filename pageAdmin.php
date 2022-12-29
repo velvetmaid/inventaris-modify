@@ -90,7 +90,7 @@ if (isset($_GET['logout'])) {
                         </li>
                         <li>
                             <a href="?page=viewMerek">
-                                <i class="fas fa-filter"></i>Merek</a>
+                                <i class="fas fa-filter"></i>Jenis Barang</a>
                         </li>
                     </ul>
                 </nav>
@@ -201,6 +201,21 @@ if (isset($_GET['logout'])) {
                                 <a href="?page">
                                     <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             </li>
+                            <li class="has-sub">
+                                <a class="js-arrow" href="#">
+                                    <i class="fa fa-chevron-down"></i>Data Barang</a>
+                                <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                    <li>
+                                        <a href="?page=kelBarang">Semua Barang</a>
+                                    </li>
+                                    <li>
+                                        <a href="?page=periode">Lihat Barang per Periode</a>
+                                    </li>
+                                    <li>
+                                        <a href="?page=barangHabis">Barang Habis</a>
+                                    </li>
+                                </ul>
+                            </li>
                             <li>
                                 <a href="?page=kasirTransaksi">
                                     <i class="fas fa-shopping-basket"></i>Barang Keluar</a>
@@ -215,7 +230,7 @@ if (isset($_GET['logout'])) {
                             </li>
                             <li>
                                 <a href="?page=viewMerek">
-                                    <i class="fas fa-filter"></i>Merek</a>
+                                    <i class="fas fa-filter"></i>Jenis Barang</a>
                             </li>
                         </ul>
                     </nav>
@@ -252,6 +267,15 @@ if (isset($_GET['logout'])) {
                     break;
                 case 'kasirPembayaran':
                     include "admin/kasirPembayaran.php";
+                    break;
+                case 'kelBarang':
+                    include "admin/viewManagerBarang.php";
+                    break;
+                case 'periode':
+                    include "admin/BarangPeriode.php";
+                    break;
+                case 'barangHabis':
+                    include "admin/BarangHabis.php";
                     break;
                 case 'struk':
                     include "admin/strukTransaksi.php";

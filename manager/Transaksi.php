@@ -47,6 +47,14 @@ if (isset($_GET['id'])) {
                   display: none;
             }
       }
+
+      #example_wrapper {
+            margin: 20px;
+      }
+
+      .text-right {
+            margin-right: 20px;
+      }
 </style>
 <div class="main-content" style="margin-top: 20px;">
       <div class="section__content section__content--p30">
@@ -73,108 +81,114 @@ if (isset($_GET['id'])) {
                         <div class="col-sm-3"></div>
                   </div>
                   <div class="row">
-                        <div class="col-sm-12">
-                              <!-- <div class="tile"> -->
-                              <?php if (isset($_GET['id'])) : ?>
-                                    <h4>Struk</h4>
-                                    <p>Transkom</p>
-                                    <hr>
-                                    <div class="row">
-                                          <div class="col-sm-6">Kode Barang Keluar : <?php echo $id ?></div>
-                                          <div class="col-sm-6">
-                                                <p class="text-right"><span><?php echo "Tanggal Cetak : " . date("Y-m-d"); ?></p>
+                        <div class="col-md-12">
+                              <div class="card">
+                                    <?php if (isset($_GET['id'])) : ?>
+                                          <h4>Rincian Barang Keluar</h4>
+                                          <p>Transkom</p>
+                                          <hr>
+                                          <div class="row">
+                                                <div class="col-sm-6">Kode Barang Keluar : <?php echo $id ?></div>
+                                                <div class="col-sm-6">
+                                                      <p class="text-right"><span><?php echo "Tanggal Cetak : " . date("Y-m-d"); ?></p>
+                                                </div>
                                           </div>
-                                    </div>
-                                    <br>
-                                    <table id="example" class="table table-borderless table-striped table-earning">
-                                          <thead>
-                                                <tr>
-                                                      <td>Nama Barang</td>
-                                                      <td>Harga Satuan</td>
-                                                      <td>Jumlah</td>
-                                                      <td>Sub Total</td>
-                                                </tr>
-                                          </thead>
-                                          <tbody>
-                                                <?php foreach ($dataDetail as $dd) : ?>
+                                          <br>
+                                          <table id="example" class="table table-borderless table-striped table-earning">
+                                                <thead>
                                                       <tr>
-                                                            <td><?= $dd['kd_pretransaksi'] ?></td>
-                                                            <td><?= $dd['nama_barang'] ?></td>
-                                                            <td><?= $dd['harga_barang'] ?></td>
-                                                            <td><?= $dd['jumlah'] ?></td>
-                                                            <td><?= "Rp." . number_format($dd['sub_total']) . ",-" ?></td>
+                                                            <td>Nama Barang</td>
+                                                            <td>Harga Satuan</td>
+                                                            <td>Jumlah</td>
+                                                            <td>Sub Total</td>
                                                       </tr>
-                                                <?php endforeach ?>
-                                          </tbody>
-                                          <tr>
-                                                <td colspan="2"></td>
-                                                <td>Jumlah Pembelian Barang</td>
-                                                <td><?php echo $jumlah_barang['sum'] ?></td>
-                                                <td></td>
-                                          </tr>
-                                          <tr>
-                                                <td colspan="2"></td>
-                                                <td colspan="2">Total</td>
-                                                <td><?php echo "Rp." . number_format($total['sum']) . ",-" ?></td>
-                                          </tr>
-                                    </table>
-                                    <br>
-                                    <p>Tanggal Beli : <?php echo $dd['tanggal_beli']; ?></p>
-                                    <br>
-                                    <a href="#" class="btn btn-primary" onclick="window.print();">Print</a>
-                              <?php endif ?>
-                              <?php if (!isset($_GET['id'])) : ?>
-                                    <h4>Data Semua Barang Keluar</h4>
-                                    <p>Transcom</p>
-                                    <hr>
-                                    <p class="text-right"><?php echo "Tanggal Cetak : " . date("Y-m-d"); ?></p>
-                                    <br>
-                                    <table id="example" class="table table-borderless table-striped table-earning">
-                                          <thead>
+                                                </thead>
+                                                <tbody>
+                                                      <?php foreach ($dataDetail as $dd) : ?>
+                                                            <tr>
+                                                                  <td><?= $dd['kd_pretransaksi'] ?></td>
+                                                                  <td><?= $dd['nama_barang'] ?></td>
+                                                                  <td><?= $dd['harga_barang'] ?></td>
+                                                                  <td><?= $dd['jumlah'] ?></td>
+                                                                  <td><?= "Rp." . number_format($dd['sub_total']) . ",-" ?></td>
+                                                            </tr>
+                                                      <?php endforeach ?>
+                                                </tbody>
                                                 <tr>
-                                                      <th>Kode Barang Keluar</th>
-                                                      <th>Nama Kasir</th>
-                                                      <th>Jumlah Beli</th>
-                                                      <th>Total Harga</th>
-                                                      <th>Tanggal Beli</th>
+                                                      <td colspan="2"></td>
+                                                      <td>Jumlah Pembelian Barang</td>
+                                                      <td><?php echo $jumlah_barang['sum'] ?></td>
+                                                      <td></td>
                                                 </tr>
-                                          </thead>
-                                          <tbody>
-                                                <?php foreach ($dataTransaksi as $dts) : ?>
-                                                      <tr>
-                                                            <td><?= $dts['kd_transaksi'] ?></td>
-                                                            <td><?= $dts['nama_user'] ?></td>
-                                                            <td><?= $dts['jumlah_beli'] ?></td>
-                                                            <td><?= number_format($dts['total_harga'])?></td>
-                                                            <!-- <td> -->
-                                                                  <!-- <?= "Rp." . number_format($dts['total_harga']) . ",-" ?> -->
-                                                            <!-- </td> -->
-                                                            <td><?= $dts['tanggal_beli'] ?></td>
-                                                      </tr>
-                                                <?php endforeach ?>
-                                          </tbody>
-                                          <?php
-                                          $grand = $trs->selectSum("transaksi", "sub_total");
-                                          ?>
-                                          <tr>
-                                                <td colspan="2"></td>
-                                                <td>Grand Total</td>
-                                                <td><?php echo "Rp." . number_format($grand['sum']) . ",-" ?></td>
-                                                <!-- <td></td> -->
-                                          </tr>
-                                    </table>
-                                    <script>
+                                                <tr>
+                                                      <td colspan="2"></td>
+                                                      <td colspan="2">Total</td>
+                                                      <td><?php echo "Rp." . number_format($total['sum']) . ",-" ?></td>
+                                                </tr>
+                                          </table>
+                                          <br>
+                                          <p>Tanggal Beli : <?php echo $dd['tanggal_beli']; ?></p>
+                                          <a href="#" class="btn btn-primary" onclick="window.print();">Print</a>
+                                    <?php endif ?>
+                                    <?php if (!isset($_GET['id'])) : ?>
 
-                                    </script>
-                                    <br>
-                                    <a href="#" class="btn btn-primary" onclick="window.print();">Print</a>
-                              <?php endif ?>
-                              <!-- </div> -->
+                                          <div class="au-card-title" style="background-image:url('images/bg-title-01.jpg');">
+                                                <div class="bg-overlay bg-overlay--blue"></div>
+                                                <h3>
+                                                      <i class="zmdi zmdi-account-calendar"></i>Data Barang Keluar
+                                                </h3>
+                                                <!-- <h4>Data Semua Barang Keluar</h4>
+                                          <p>Transcom</p> -->
+                                          </div>
+                                          <div class="card-body">
+                                                <btn href="#" class="btn btn-info" onclick="window.print();">Print</btn>
+                                          </div>
+                                          <p class="text-right"><?php echo "Tanggal Cetak : " . date("Y-m-d"); ?></p>
+                                          <table id="example" class="table table-borderless table-striped table-earning">
+                                                <thead>
+                                                      <tr>
+                                                            <th>Kode Barang Keluar</th>
+                                                            <th>Nama Kasir</th>
+                                                            <th>Jumlah Beli</th>
+                                                            <th>Total Harga</th>
+                                                            <th>Tanggal Beli</th>
+                                                      </tr>
+                                                </thead>
+                                                <tbody>
+                                                      <?php foreach ($dataTransaksi as $dts) : ?>
+                                                            <tr>
+                                                                  <td><?= $dts['kd_transaksi'] ?></td>
+                                                                  <td><?= $dts['nama_user'] ?></td>
+                                                                  <td><?= $dts['jumlah_beli'] ?></td>
+                                                                  <td><?= number_format($dts['total_harga']) ?></td>
+                                                                  <!-- <td> -->
+                                                                  <!-- <?= "Rp." . number_format($dts['total_harga']) . ",-" ?> -->
+                                                                  <!-- </td> -->
+                                                                  <td><?= $dts['tanggal_beli'] ?></td>
+                                                            </tr>
+                                                      <?php endforeach ?>
+                                                </tbody>
+                                                <?php
+                                                $grand = $trs->selectSum("transaksi", "sub_total");
+                                                ?>
+                                                <tr>
+                                                      <td colspan="2"></td>
+                                                      <td>Grand Total</td>
+                                                      <td><?php echo "Rp." . number_format($grand['sum']) . ",-" ?></td>
+                                                      <!-- <td></td> -->
+                                                </tr>
+                                          </table>
+                              </div>
+                              <script>
+
+                              </script>
+                              <br>
+                        <?php endif ?>
                         </div>
                   </div>
             </div>
-
       </div>
+</div>
 </div>
 
 <div class="modal fade" id="fajarmodal" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" aria-hidden="true" data-backdrop="static">

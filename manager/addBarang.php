@@ -1,6 +1,6 @@
 <?php
 $br = new lsp();
-if ($_SESSION['level'] != "Admin") {
+if ($_SESSION['level'] != "Manager") {
     header("location:../index.php");
 }
 $table = "table_barang";
@@ -8,8 +8,10 @@ $getMerek = $br->select("table_merek");
 $getBar = $br->select("table_barang");
 $getDistr = $br->select("table_distributor");
 $autokode = $br->autokode("table_barang", "kd_barang", "BR");
+$transkode = $br->autokode("table_barang_masuk", "kd_barang_masuk", "BM");
 $waktu    = date("Y-m-d");
 if (isset($_POST['getSimpan'])) {
+    $kode_barang_masuk  = $br->validateHtml($_POST['kode_barang_masuk']);
     $kode_barang  = $br->validateHtml($_POST['kode_barang']);
     $nama_barang  = $br->validateHtml($_POST['nama_barang']);
     $merek_barang = $br->validateHtml($_POST['merek_barang']);
@@ -20,7 +22,7 @@ if (isset($_POST['getSimpan'])) {
     $foto         = $_FILES['foto'];
     $ket   = $_POST['ket'];
 
-    if ($kode_barang == " " || $nama_barang == " " || $merek_barang == " " || $distributor == " " || $harga == " " || $stok == " " || $foto == " " || $ket == " ") {
+    if ($kode_barang == " " || $nama_barang == " " || $merek_barang == " " || $distributor == " " || $harga == " " || $stok == " " || $stok_masuk == " " || $foto == " " || $ket == " ") {
         $response = ['response' => 'negative', 'alert' => 'lengkapi field'];
     } else {
         if ($harga < 0 || $stok < 0 || $harga == 0 || $stok == 0) {
@@ -28,9 +30,11 @@ if (isset($_POST['getSimpan'])) {
         } else {
             $response = $br->validateImage();
             if ($response['types'] == "true") {
-                $value = "'$kode_barang','$nama_barang','$merek_barang','$distributor','$waktu','$harga','$stok','$response[image]','$ket'";
+                $valueIns = "'$kode_barang','$nama_barang','$merek_barang','$distributor','$waktu','$harga','$stok', $stok_masuk, '$response[image]','$ket'";
+                $response = $br->insert("table_barang", $valueIns, "?page=viewBarang");
 
-                $response = $br->insert($table, $value, "?page=viewBarang");
+                $value = "'$kode_barang_masuk','$kode_barang','$nama_barang','$merek_barang','$distributor','$waktu','$harga','$stok', $stok_masuk, '$response[image]','$ket'";
+                $response = $br->insert("table_barang_masuk", $value, "?page=viewBarang");
             }
         }
     }
@@ -53,8 +57,12 @@ if (isset($_POST['getSimpan'])) {
                                 <div class="col-md-6">
                                     <div class="card-body">
                                         <div class="form-group">
+                                            <label for="">Kode barang masuk</label>
+                                            <input type="text" style="font-weight: bold; color: red;" class="form-control" name="kode_barang_masuk" value="<?php echo $transkode; ?>" readonly>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="">Kode barang</label>
-                                            <input type="text" style="font-weight: bold; color: red;" class="form-control" name="kode_barang" value="<?php echo $autokode; ?>" readonly>
+                                            <input type="text" style="font-weight: bold; color: blue;" class="form-control" name="kode_barang" value="<?php echo $autokode; ?>" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label for="">Nama barang</label>
@@ -72,7 +80,7 @@ if (isset($_POST['getSimpan'])) {
                                         <div class="form-group">
                                             <label for="">Supplier</label>
                                             <select name="distributor" class="form-control">
-                                                <option value=" ">Pilih Supplier</option>
+                                                <option value="">Pilih Supplier</option>
                                                 <?php foreach ($getDistr as $dr) { ?>
                                                     <option value="<?= $dr['kd_distributor'] ?>"><?= $dr['nama_distributor'] ?></option>
                                                 <?php } ?>
@@ -88,7 +96,8 @@ if (isset($_POST['getSimpan'])) {
                                         </div>
                                         <div class="form-group">
                                             <label for="">Stok barang</label>
-                                            <input type="number" class="form-control" name="stok">
+                                            <input id="stok" type="number" class="form-control" name="stok">
+                                            <input id="stok_masuk" style="display: none;" type="number" class="form-control" name="stok_masuk">
                                         </div>
                                         <div class="form-group">
                                             <label for="">Foto</label>
@@ -112,3 +121,12 @@ if (isset($_POST['getSimpan'])) {
         </div>
     </div>
 </div>
+
+<script>
+    $('#stok').keyup(function() {
+        $('#stok_masuk').val($(this).val());
+    });
+    $('#stok_masuk').keyup(function() {
+        $('#stok').val($(this).val());
+    });
+</script>

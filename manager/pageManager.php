@@ -97,9 +97,17 @@ if (isset($_GET['logout'])) {
                             <a href="?page">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
+                        <li>
+                            <a href="?page=kelPegawai">
+                                <i class="fas fa-users"></i>Kelola Pegawai</a>
+                        </li>
+                        <li>
+                            <a href="?page=kelTransaksi">
+                                <i class="fas fa-shopping-basket"></i>Kelola Barang Keluar</a>
+                        </li>
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="fa fa-chevron-down"></i>Data Barang</a>
+                                <i class="fas fa-archive"></i>Data Barang</a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                 <li>
                                     <a href="?page=kelBarang">Semua Barang</a>
@@ -111,26 +119,6 @@ if (isset($_GET['logout'])) {
                                     <a href="?page=barangHabis">Barang Habis</a>
                                 </li>
                             </ul>
-                        </li>
-                        <li>
-                            <a href="?page=viewBarang">
-                                <i class="fas fa-archive"></i>Barang Masuk</a>
-                        </li>
-                        <li>
-                            <a href="?page=kelTransaksi">
-                                <i class="fas fa-shopping-basket"></i>Barang Keluar</a>
-                        </li>
-                        <li>
-                            <a href="?page=viewDistributor">
-                                <i class="fas fa-user"></i>Supplier</a>
-                        </li>
-                        <li>
-                            <a href="?page=viewMerek">
-                                <i class="fas fa-filter"></i>Jenis Barang</a>
-                        </li>
-                        <li>
-                            <a href="?page=kelPegawai">
-                                <i class="fas fa-users"></i>Kelola Pegawai</a>
                         </li>
                     </ul>
                 </nav>
@@ -144,7 +132,7 @@ if (isset($_GET['logout'])) {
                         <div class="header-wrap2">
                             <div class="logo d-block d-lg-none">
                                 <a href="#">
-                                    <img src="images/icon/logo-white.png" alt="CoolAdmin" />
+                                    <img src="images/icon/logo-white.png" alt="Cool Admin" />
                                 </a>
                             </div>
                             <div class="header-button2">
@@ -241,9 +229,17 @@ if (isset($_GET['logout'])) {
                                 <a href="?page">
                                     <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             </li>
+                            <li>
+                                <a href="?page=kelPegawai">
+                                    <i class="fas fa-users"></i>Kelola Pegawai</a>
+                            </li>
+                            <li>
+                                <a href="?page=kelTransaksi">
+                                    <i class="fas fa-shopping-basket"></i>Kelola Barang Keluar</a>
+                            </li>
                             <li class="has-sub">
                                 <a class="js-arrow" href="#">
-                                    <i class="fa fa-chevron-down"></i>Data Barang</a>
+                                    <i class="fas fa-tachometer-alt"></i>Data Barang</a>
                                 <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                     <li>
                                         <a href="?page=kelBarang">Semua Barang</a>
@@ -255,26 +251,6 @@ if (isset($_GET['logout'])) {
                                         <a href="?page=barangHabis">Barang Habis</a>
                                     </li>
                                 </ul>
-                            </li>
-                            <li>
-                                <a href="?page=viewBarang">
-                                    <i class="fas fa-archive"></i>Barang Masuk</a>
-                            </li>
-                            <li>
-                                <a href="?page=kelTransaksi">
-                                    <i class="fas fa-shopping-basket"></i>Barang Keluar</a>
-                            </li>
-                            <li>
-                                <a href="?page=viewDistributor">
-                                    <i class="fas fa-user"></i>Supplier</a>
-                            </li>
-                            <li>
-                                <a href="?page=viewMerek">
-                                    <i class="fas fa-filter"></i>Jenis Barang</a>
-                            </li>
-                            <li>
-                                <a href="?page=kelPegawai">
-                                    <i class="fas fa-users"></i>Kelola Pegawai</a>
                             </li>
                         </ul>
                     </nav>
@@ -306,9 +282,6 @@ if (isset($_GET['logout'])) {
                 case 'viewBarang':
                     include "manager/viewBarang.php";
                     break;
-                case 'addStokBarang':
-                    include "manager/addStokBarang.php";
-                    break;
                 case 'viewDistributor':
                     include "manager/viewDistributor.php";
                     break;
@@ -320,9 +293,6 @@ if (isset($_GET['logout'])) {
                     break;
                 case 'viewBarangDetail':
                     include "manager/viewBarangDetail.php";
-                    break;
-                case 'viewBarangDetail1':
-                    include "manager/viewBarangDetail1.php";
                     break;
                 case 'viewBarangEdit':
                     include "manager/viewBarangEdit.php";

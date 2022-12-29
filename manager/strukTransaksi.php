@@ -86,7 +86,7 @@ $jumlah_barang = $struk->selectSumWhere("transaksi", "jumlah", "kd_transaksi='$i
 							<br>
 							<p>Tanggal Beli : <?php echo $dd['tanggal_beli']; ?></p>
 							<br>
-							<a href="#" class="btn btn-info ds" onclick="window.print()"><i class="fa fa-print"></i> Cetak Struk</a>
+							<a href="#" class="btn btn-info ds" onclick="window.print()"><i class="fa fa-print"></i> Cetak Rincian Barang Keluar</a>
 							<a href="?" class="btn btn-danger ds">Kembali</a>
 						</div>
 					</div>

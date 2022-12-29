@@ -1,6 +1,6 @@
 <?php 
     $me       = new lsp();
-    if ($_SESSION['level'] != "Admin") {
+    if ($_SESSION['level'] != "Manager") {
     header("location:../index.php");
     }
     $table    = "table_merek";

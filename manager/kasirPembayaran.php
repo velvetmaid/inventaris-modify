@@ -1,6 +1,6 @@
 <?php 
 	$pem       = new lsp();
-	$transkode = $pem->autokode("table_barang_keluar","kd_barang_keluar","TR");
+	$transkode = $pem->autokode("table_barang_keluar","kd_barang_keluar","BR");
 	$sql       = "SELECT SUM(sub_total) as sub FROM table_antrian WHERE kd_barang_keluar = '$transkode'";
 	$exec      = mysqli_query($con,$sql);
 	$assoc     = mysqli_fetch_assoc($exec);

@@ -5,7 +5,7 @@
     }
     $table = "table_supplier";
     $dataDis = $dis->select($table);
-    $autokode = $dis->autokode($table,"kd_supplier","DS");
+    $autokode = $dis->autokode($table,"kd_supplier","SP");
 
     if (isset($_GET['delete'])) {
         $where = "kd_supplier";

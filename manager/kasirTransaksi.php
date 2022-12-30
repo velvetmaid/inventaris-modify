@@ -1,6 +1,6 @@
 <?php 
     $trans     = new lsp();
-    $transkode = $trans->autokode("table_barang_keluar","kd_barang_keluar","TR");
+    $transkode = $trans->autokode("table_barang_keluar","kd_barang_keluar","BR");
     $antrian   = $trans->autokode("table_antrian","kd_antrian","AN");
     $barangs   = $trans->select("table_barang");
     if (isset($_GET['getItem'])) {
@@ -129,7 +129,7 @@
                             <br><br>
                             <?php
                                 $kr        = new lsp();
-                                $transkode = $kr->autokode("table_barang_keluar","kd_barang_keluar","TR");
+                                $transkode = $kr->autokode("table_barang_keluar","kd_barang_keluar","BR");
                                 $datas     = $kr->querySelect("SELECT * FROM transaksi WHERE kd_barang_keluar = '$transkode'");
                                 $sql       = "SELECT SUM(sub_total) as sub FROM table_antrian WHERE kd_barang_keluar = '$transkode'";
                                 $exec      = mysqli_query($con,$sql);

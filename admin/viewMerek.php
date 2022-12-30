@@ -5,7 +5,7 @@
     }
     $table    = "table_jenis_barang";
     $dataMerek  = $me->select($table);
-    $autokode = $me->autokode($table,"kd_jenis_barang","ME");
+    $autokode = $me->autokode($table,"kd_jenis_barang","JN");
 
     if (isset($_GET['delete'])) {
         $id       = $_GET['id'];

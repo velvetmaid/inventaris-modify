@@ -3,12 +3,12 @@ $dis = new lsp();
 if ($_SESSION['level'] != "Manager") {
     header("location:../index.php");
 }
-$table = "table_distributor";
+$table = "table_supplier";
 $dataDis = $dis->select($table);
-$autokode = $dis->autokode($table, "kd_distributor", "DS");
+$autokode = $dis->autokode($table, "kd_supplier", "DS");
 
 if (isset($_GET['delete'])) {
-    $where = "kd_distributor";
+    $where = "kd_supplier";
     $whereValues = $_GET['id'];
     $redirect = "?page=viewDistributor";
     $response = $dis->delete($table, $where, $whereValues, $redirect);
@@ -16,16 +16,16 @@ if (isset($_GET['delete'])) {
 
 if (isset($_GET['edit'])) {
     $id = $_GET['id'];
-    $editData = $dis->selectWhere($table, "kd_distributor", $id);
-    $autokode = $editData['kd_distributor'];
+    $editData = $dis->selectWhere($table, "kd_supplier", $id);
+    $autokode = $editData['kd_supplier'];
 }
 if (isset($_POST['getSave'])) {
-    $kd_distributor   = $dis->validateHtml($_POST['kode_distributor']);
-    $nama_distributor = $dis->validateHtml($_POST['nama_distributor']);
+    $kd_supplier   = $dis->validateHtml($_POST['kode_distributor']);
+    $nama_supplier = $dis->validateHtml($_POST['nama_supplier']);
     $nohp_distributor = $dis->validateHtml($_POST['nohp_distributor']);
     $alamat           = $dis->validateHtml($_POST['alamat']);
 
-    if ($kd_distributor == " " || empty($kd_distributor) || $nama_distributor == " " || empty($nama_distributor) || $nohp_distributor == " " || empty($nohp_distributor) || $alamat == " " || empty($alamat)) {
+    if ($kd_supplier == " " || empty($kd_supplier) || $nama_supplier == " " || empty($nama_supplier) || $nohp_distributor == " " || empty($nohp_distributor) || $alamat == " " || empty($alamat)) {
         $response = ['response' => 'negative', 'alert' => 'Lengkapi field'];
     } else {
         $validno = substr($nohp_distributor, 0, 2);
@@ -35,7 +35,7 @@ if (isset($_POST['getSave'])) {
             if (strlen($nohp_distributor) < 11) {
                 $response = ['response' => 'negative', 'alert' => 'Masukan 11 digit No. Hp'];
             } else {
-                $value = "'$kd_distributor','$nama_distributor','$alamat','$nohp_distributor'";
+                $value = "'$kd_supplier','$nama_supplier','$alamat','$nohp_distributor'";
                 $response = $dis->insert($table, $value, "?page=viewDistributor");
             }
         }
@@ -43,12 +43,12 @@ if (isset($_POST['getSave'])) {
 }
 
 if (isset($_POST['getUpdate'])) {
-    $kd_distributor   = $dis->validateHtml($_POST['kode_distributor']);
-    $nama_distributor = $dis->validateHtml($_POST['nama_distributor']);
+    $kd_supplier   = $dis->validateHtml($_POST['kode_distributor']);
+    $nama_supplier = $dis->validateHtml($_POST['nama_supplier']);
     $nohp_distributor = $dis->validateHtml($_POST['nohp_distributor']);
     $alamat           = $dis->validateHtml($_POST['alamat']);
 
-    if ($kd_distributor == "" || $nama_distributor == "" || $nohp_distributor == "" || $alamat == "") {
+    if ($kd_supplier == "" || $nama_supplier == "" || $nohp_distributor == "" || $alamat == "") {
         $response = ['response' => 'negative', 'alert' => 'lengkapi field'];
     } else {
         $validno = substr($nohp_distributor, 0, 2);
@@ -58,8 +58,8 @@ if (isset($_POST['getUpdate'])) {
             if (strlen($nohp_distributor) < 11) {
                 $response = ['response' => 'negative', 'alert' => 'Masukan 11 digit No Hp'];
             } else {
-                $value = "kd_distributor='$kd_distributor',nama_distributor='$nama_distributor',no_telp='$nohp_distributor',alamat='$alamat'";
-                $response = $dis->update($table, $value, "kd_distributor", $_GET['id'], "?page=viewDistributor");
+                $value = "kd_supplier='$kd_supplier',nama_supplier='$nama_supplier',no_telp='$nohp_distributor',alamat='$alamat'";
+                $response = $dis->update($table, $value, "kd_supplier", $_GET['id'], "?page=viewDistributor");
             }
         }
     }
@@ -106,7 +106,7 @@ if (isset($_POST['getUpdate'])) {
                                 </div>
                                 <div class="form-group">
                                     <label for="">Nama Supplier</label>
-                                    <input type="text" class="form-control form-control-sm" name="nama_distributor" value="<?php echo @$editData['nama_distributor'] ?>">
+                                    <input type="text" class="form-control form-control-sm" name="nama_supplier" value="<?php echo @$editData['nama_supplier'] ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="">No. Hp Supplier</label>
@@ -151,13 +151,13 @@ if (isset($_POST['getUpdate'])) {
                                         foreach ($dataDis as $ds) {
                                         ?>
                                             <tr>
-                                                <td><?= $ds['kd_distributor'] ?></td>
-                                                <td><?= $ds['nama_distributor'] ?></td>
+                                                <td><?= $ds['kd_supplier'] ?></td>
+                                                <td><?= $ds['nama_supplier'] ?></td>
                                                 <td><?= $ds['no_telp'] ?></td>
                                                 <td><?= $ds['alamat'] ?></td>
                                                 <td class="text-center">
                                                     <div class="btn-group">
-                                                        <a data-toggle="tooltip" data-placement="top" title="Edit" href="?page=viewDistributor&edit&id=<?= $ds['kd_distributor'] ?>" class="btn btn-info"><i class="fa fa-edit"></i></a>
+                                                        <a data-toggle="tooltip" data-placement="top" title="Edit" href="?page=viewDistributor&edit&id=<?= $ds['kd_supplier'] ?>" class="btn btn-info"><i class="fa fa-edit"></i></a>
                                                     </div>
                                                     <div class="btn-group">
                                                         <a id="btnDelete<?php echo $no; ?>" data-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-danger"><i style="color: #fff;" class="fa fa-trash"></i></a>
@@ -179,7 +179,7 @@ if (isset($_POST['getUpdate'])) {
                                                         closeOnCancel: true
                                                     }, function(isConfirm) {
                                                         if (isConfirm) {
-                                                            window.location.href = "?page=viewDistributor&delete&id=<?php echo $ds['kd_distributor'] ?>";
+                                                            window.location.href = "?page=viewDistributor&delete&id=<?php echo $ds['kd_supplier'] ?>";
                                                         }
                                                     });
                                                 });

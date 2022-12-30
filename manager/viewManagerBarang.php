@@ -95,7 +95,7 @@ if (isset($_GET['delete'])) {
 												<td><?= $ds['kd_barang'] ?></td>
 												<td><?= $ds['nama_barang'] ?></td>
 												<td><?= $ds['merek'] ?></td>
-												<td><?= $ds['nama_distributor'] ?></td>
+												<td><?= $ds['nama_supplier'] ?></td>
 												<td><?= $ds['tanggal_masuk'] ?></td>
 												<td><?= number_format($ds['harga_barang']) ?></td>
 												<td><?= $ds['stok_masuk'] ?></td>

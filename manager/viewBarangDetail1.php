@@ -46,7 +46,7 @@ if ($_SESSION['level'] != "Manager") {
                                 <tr>
                                     <td>Supplier</td>
                                     <td>:</td>
-                                    <td><?php echo $detail['nama_distributor']; ?></td>
+                                    <td><?php echo $detail['nama_supplier']; ?></td>
                                 </tr>
                                 <tr>
                                     <td>Tanggal Masuk</td>

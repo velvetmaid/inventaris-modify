@@ -3,9 +3,9 @@ $trs = new lsp();
 $dataTransaksi = $trs->select("transaksi_terbaru");
 if (isset($_GET['id'])) {
       $id = $_GET['id'];
-      $dataDetail = $trs->edit("detailtransaksi", "kd_transaksi", $id);
-      $total  = $trs->selectSumWhere("transaksi", "sub_total", "kd_transaksi='$id'");
-      $jumlah_barang = $trs->selectSumWhere("transaksi", "jumlah", "kd_transaksi='$id'");
+      $dataDetail = $trs->edit("detailtransaksi", "kd_barang_keluar", $id);
+      $total  = $trs->selectSumWhere("transaksi", "sub_total", "kd_barang_keluar='$id'");
+      $jumlah_barang = $trs->selectSumWhere("transaksi", "jumlah", "kd_barang_keluar='$id'");
 }
 ?>
 <style>
@@ -106,7 +106,7 @@ if (isset($_GET['id'])) {
                                                 <tbody>
                                                       <?php foreach ($dataDetail as $dd) : ?>
                                                             <tr>
-                                                                  <td><?= $dd['kd_pretransaksi'] ?></td>
+                                                                  <td><?= $dd['kd_antrian'] ?></td>
                                                                   <td><?= $dd['nama_barang'] ?></td>
                                                                   <td><?= $dd['harga_barang'] ?></td>
                                                                   <td><?= $dd['jumlah'] ?></td>
@@ -157,7 +157,7 @@ if (isset($_GET['id'])) {
                                                 <tbody>
                                                       <?php foreach ($dataTransaksi as $dts) : ?>
                                                             <tr>
-                                                                  <td><?= $dts['kd_transaksi'] ?></td>
+                                                                  <td><?= $dts['kd_barang_keluar'] ?></td>
                                                                   <td><?= $dts['nama_user'] ?></td>
                                                                   <td><?= $dts['jumlah_beli'] ?></td>
                                                                   <td><?= number_format($dts['total_harga']) ?></td>
@@ -214,7 +214,7 @@ if (isset($_GET['id'])) {
                               <tbody>
                                     <?php foreach ($dataTransaksi as $dts) : ?>
                                           <tr>
-                                                <td><a href="?page=kelTransaksi&id=<?= $dts['kd_transaksi']; ?>"><?= $dts['kd_transaksi'] ?></a></td>
+                                                <td><a href="?page=kelTransaksi&id=<?= $dts['kd_barang_keluar']; ?>"><?= $dts['kd_barang_keluar'] ?></a></td>
                                                 <td><?= $dts['nama_user'] ?></td>
                                                 <td><?= $dts['jumlah_beli'] ?></td>
                                                 <td><?= $dts['total_harga'] ?></td>

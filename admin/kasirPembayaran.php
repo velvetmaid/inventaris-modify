@@ -1,14 +1,14 @@
 <?php 
 	$pem       = new lsp();
-	$transkode = $pem->autokode("table_transaksi","kd_transaksi","TR");
-	$sql       = "SELECT SUM(sub_total) as sub FROM table_pretransaksi WHERE kd_transaksi = '$transkode'";
+	$transkode = $pem->autokode("table_barang_keluar","kd_barang_keluar","TR");
+	$sql       = "SELECT SUM(sub_total) as sub FROM table_antrian WHERE kd_barang_keluar = '$transkode'";
 	$exec      = mysqli_query($con,$sql);
 	$assoc     = mysqli_fetch_assoc($exec);
-	$sql1      = "SELECT SUM(jumlah) as jum FROM table_pretransaksi WHERE kd_transaksi = '$transkode'";
+	$sql1      = "SELECT SUM(jumlah) as jum FROM table_antrian WHERE kd_barang_keluar = '$transkode'";
 	$exec1     = mysqli_query($con,$sql1);
 	$assoc1    = mysqli_fetch_assoc($exec1);
 	$auth      = $pem->selectWhere("table_user","username",$_SESSION['username']);
-	$sql2      = "SELECT COUNT(kd_pretransaksi) as count FROM table_pretransaksi WHERE kd_transaksi = '$transkode'";
+	$sql2      = "SELECT COUNT(kd_antrian) as count FROM table_antrian WHERE kd_barang_keluar = '$transkode'";
 	$exec2     = mysqli_query($con,$sql2);
 	$assoc2    = mysqli_fetch_assoc($exec2);
 	if ($assoc2['count'] <= 0) {
@@ -27,7 +27,7 @@
 			}else{
 				$date  = date("Y-m-d");
 				$value = "'$transkode','$auth[kd_user]','$assoc1[jum]','$assoc[sub]','$date'";
-				$response = $pem->insert("table_transaksi",$value,"?page=struk&id=$transkode");
+				$response = $pem->insert("table_barang_keluar",$value,"?page=struk&id=$transkode");
 				if ($response['response'] == "positive") {
 					unset($_SESSION['transaksi']);
 				}

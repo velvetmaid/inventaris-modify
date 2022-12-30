@@ -1,12 +1,12 @@
 <?php
 $dash = new lsp();
-$dis  = $dash->getCountRows("table_distributor");
-$mer  = $dash->getCountRows("table_merek");
+$dis  = $dash->getCountRows("table_supplier");
+$mer  = $dash->getCountRows("table_jenis_barang");
 $bar  = $dash->selectCount("table_barang", "kd_barang");
 $pegawai = $dash->selectCount("table_user", "kd_user");
 $barang  = $dash->selectCount("table_barang", "kd_barang");
-$berhasil = $dash->selectCount("table_transaksi", "kd_transaksi");
-$assoc1   = $dash->selectCount("table_transaksi", "jumlah_beli");
+$berhasil = $dash->selectCount("table_barang_keluar", "kd_barang_keluar");
+$assoc1   = $dash->selectCount("table_barang_keluar", "jumlah_beli");
 
 if ($_SESSION['level'] != "Admin") {
     header("location:../index.php");

@@ -4,9 +4,9 @@ if ($_SESSION['level'] != "Admin") {
     header("location:../index.php");
 }
 $table = "table_barang";
-$getMerek = $br->select("table_merek");
+$getMerek = $br->select("table_jenis_barang");
 $getBar = $br->select("table_barang");
-$getDistr = $br->select("table_distributor");
+$getDistr = $br->select("table_supplier");
 $autokode = $br->autokode("table_barang", "kd_barang", "BR");
 $waktu    = date("Y-m-d");
 if (isset($_POST['getSimpan'])) {
@@ -65,7 +65,7 @@ if (isset($_POST['getSimpan'])) {
                                             <select name="merek_barang" class="form-control">
                                                 <option value=" ">Pilih Jenis Barang</option>
                                                 <?php foreach ($getMerek as $mr) { ?>
-                                                    <option value="<?= $mr['kd_merek'] ?>"><?= $mr['merek'] ?></option>
+                                                    <option value="<?= $mr['kd_jenis_barang'] ?>"><?= $mr['merek'] ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
@@ -74,7 +74,7 @@ if (isset($_POST['getSimpan'])) {
                                             <select name="distributor" class="form-control">
                                                 <option value=" ">Pilih Supplier</option>
                                                 <?php foreach ($getDistr as $dr) { ?>
-                                                    <option value="<?= $dr['kd_distributor'] ?>"><?= $dr['nama_distributor'] ?></option>
+                                                    <option value="<?= $dr['kd_supplier'] ?>"><?= $dr['nama_supplier'] ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>

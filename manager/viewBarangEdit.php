@@ -5,8 +5,8 @@
   	}
 	$table    = "table_barang";
 	$data     = $br->selectWhere($table,"kd_barang",$_GET['id']);
-	$getMerek = $br->select("table_merek");
-	$getDistr = $br->select("table_distributor");
+	$getMerek = $br->select("table_jenis_barang");
+	$getDistr = $br->select("table_supplier");
 	// $waktu    = date("Y-m-d");
 	if (isset($_POST['getSimpan'])) {
 		$kode_barang  = $br->validateHtml($_POST['kode_barang']);
@@ -24,12 +24,12 @@
 			 	$response = ['response'=>'negative','alert'=>'harga atau stok tidak boleh mines'];
 			}else{
 				if ($_FILES['foto']['name'] == "") {
-					$value = "kd_barang='$kode_barang',nama_barang='$nama_barang',kd_merek='$merek_barang',kd_distributor='$distributor',harga_barang='$harga',stok_barang='$stok',keterangan='$ket'";
+					$value = "kd_barang='$kode_barang',nama_barang='$nama_barang',kd_jenis_barang='$merek_barang',kd_supplier='$distributor',harga_barang='$harga',stok_barang='$stok',keterangan='$ket'";
 					$response = $br->update($table,$value,"kd_barang",$_GET['id'],"?page=viewBarang");
 				}else{
 					$response = $br->validateImage();
 					if ($response['types'] == "true") {
-						$value = "kd_barang='$kode_barang',nama_barang='$nama_barang',kd_merek='$merek_barang',kd_distributor='$distributor',harga_barang='$harga',stok_barang='$stok',keterangan='$ket',gambar='$response[image]'";
+						$value = "kd_barang='$kode_barang',nama_barang='$nama_barang',kd_jenis_barang='$merek_barang',kd_supplier='$distributor',harga_barang='$harga',stok_barang='$stok',keterangan='$ket',gambar='$response[image]'";
 						$response = $br->update($table,$value,"kd_barang",$_GET['id'],"?page=viewBarang");
 					}else{
 						$response = ['response'=>'negative','alert'=>'gambar error'];
@@ -68,10 +68,10 @@
 												<select name="merek_barang" class="form-control">
 													<option value=" ">Pilih Jenis Barang</option>
 													<?php foreach($getMerek as $mr) { ?>
-													<?php if ($mr['kd_merek'] == $data['kd_merek']){ ?>
-														<option value="<?= $mr['kd_merek'] ?>" selected><?= $mr['merek'] ?></option>
+													<?php if ($mr['kd_jenis_barang'] == $data['kd_jenis_barang']){ ?>
+														<option value="<?= $mr['kd_jenis_barang'] ?>" selected><?= $mr['merek'] ?></option>
 													<?php }else{ ?>
-													<option value="<?= $mr['kd_merek'] ?>"><?= $mr['merek'] ?></option>
+													<option value="<?= $mr['kd_jenis_barang'] ?>"><?= $mr['merek'] ?></option>
 													<?php } ?>
 													<?php } ?>
 												</select>
@@ -81,10 +81,10 @@
 												<select name="distributor" class="form-control">
 													<option value=" ">Pilih Supplier</option>
 													<?php foreach($getDistr as $dr) { ?>
-													<?php if ($dr['kd_distributor'] == $data['kd_distributor']){ ?>
-													<option value="<?= $dr['kd_distributor'] ?>" selected><?= $dr['nama_distributor'] ?></option>
+													<?php if ($dr['kd_supplier'] == $data['kd_supplier']){ ?>
+													<option value="<?= $dr['kd_supplier'] ?>" selected><?= $dr['nama_supplier'] ?></option>
 													<?php }else{ ?>
-													<option value="<?= $dr['kd_distributor'] ?>"><?= $dr['nama_distributor'] ?></option>
+													<option value="<?= $dr['kd_supplier'] ?>"><?= $dr['nama_supplier'] ?></option>
 													<?php } ?>
 													<?php } ?>
 												</select>

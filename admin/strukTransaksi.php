@@ -1,10 +1,10 @@
 <?php
 $struk  = new lsp();
 $id = $_GET['id'];
-$data   = $struk->edit("transaksi", "kd_transaksi", $id);
-$total  = $struk->selectSumWhere("transaksi", "sub_total", "kd_transaksi='$id'");
-$dataDetail = $struk->edit("detailtransaksi", "kd_transaksi", $id);
-$jumlah_barang = $struk->selectSumWhere("transaksi", "jumlah", "kd_transaksi='$id'");
+$data   = $struk->edit("transaksi", "kd_barang_keluar", $id);
+$total  = $struk->selectSumWhere("transaksi", "sub_total", "kd_barang_keluar='$id'");
+$dataDetail = $struk->edit("detailtransaksi", "kd_barang_keluar", $id);
+$jumlah_barang = $struk->selectSumWhere("transaksi", "jumlah", "kd_barang_keluar='$id'");
 ?>
 <style>
 	.col-sm-8 {
@@ -64,7 +64,7 @@ $jumlah_barang = $struk->selectSumWhere("transaksi", "jumlah", "kd_transaksi='$i
 								</tr>
 								<?php foreach ($dataDetail as $dd) : ?>
 									<tr>
-										<td><?= $dd['kd_pretransaksi'] ?></td>
+										<td><?= $dd['kd_antrian'] ?></td>
 										<td><?= $dd['nama_barang'] ?></td>
 										<td><?= $dd['harga_barang'] ?></td>
 										<td><?= $dd['jumlah'] ?></td>

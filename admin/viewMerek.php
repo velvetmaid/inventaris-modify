@@ -3,18 +3,18 @@
     if ($_SESSION['level'] != "Admin") {
     header("location:../index.php");
     }
-    $table    = "table_merek";
+    $table    = "table_jenis_barang";
     $dataMerek  = $me->select($table);
-    $autokode = $me->autokode($table,"kd_merek","ME");
+    $autokode = $me->autokode($table,"kd_jenis_barang","ME");
 
     if (isset($_GET['delete'])) {
         $id       = $_GET['id'];
-        $cek      = $me->selectCountWhere("table_barang","kd_barang","kd_merek='$id'");
+        $cek      = $me->selectCountWhere("table_barang","kd_barang","kd_jenis_barang='$id'");
         // echo $cek['count'];
         if ($cek['count'] > 0) {
             $response = ['response'=>'negative','alert'=>'Merek ini sudah di pakai di barang tidak dapat di hapus'];
         }else{
-        $where    = "kd_merek";
+        $where    = "kd_jenis_barang";
         $response = $me->delete($table,$where,$id,"?page=viewMerek");
         }
     }
@@ -41,13 +41,13 @@
         $merek      = $me->validateHtml($_POST['merek']);
 
         if ($_FILES['foto']['name'] == "") {
-             $value    = "kd_merek='$kode_merek',merek='$merek'";
-             $response = $me->update($table,$value,"kd_merek",$_GET['id'],"?page=viewMerek");
+             $value    = "kd_jenis_barang='$kode_merek',merek='$merek'";
+             $response = $me->update($table,$value,"kd_jenis_barang",$_GET['id'],"?page=viewMerek");
         }else{
             $response = $me->validateImage();
             if ($response['types'] == "true") {
-                $value = "kd_merek='$kode_merek',merek='$merek', foto_merek='$response[image]'";
-                $response = $me->update($table,$value,"kd_merek",$_GET['id'],"?page=viewMerek");
+                $value = "kd_jenis_barang='$kode_merek',merek='$merek', foto_merek='$response[image]'";
+                $response = $me->update($table,$value,"kd_jenis_barang",$_GET['id'],"?page=viewMerek");
             }else{
                 $response = ['response'=>'negative','alert'=>'Error Gambar'];
             }
@@ -55,7 +55,7 @@
     }
 
     if (isset($_GET['edit'])) {
-        $editData = $me->selectWhere($table,"kd_merek",$_GET['id']);
+        $editData = $me->selectWhere($table,"kd_jenis_barang",$_GET['id']);
     }
     
  ?>
@@ -100,7 +100,7 @@
                                     <input type="text" class="form-control form-control-sm" name="kode_merek" style="font-weight: bold; color: red;" value="<?php echo $autokode; ?>" readonly>
                                     <?php endif ?>
                                     <?php if(isset($_GET['edit'])) : ?>
-                                    <input type="text" class="form-control form-control-sm" name="kode_merek" style="font-weight: bold; color: red;" value="<?php echo @$editData['kd_merek']; ?>" readonly>
+                                    <input type="text" class="form-control form-control-sm" name="kode_merek" style="font-weight: bold; color: red;" value="<?php echo @$editData['kd_jenis_barang']; ?>" readonly>
                                     <?php endif ?>
 
                                 </div>
@@ -150,12 +150,12 @@
                                             foreach($dataMerek as $ds){
                                          ?>
                                        <tr>
-                                            <td><?= $ds['kd_merek'] ?></td>
+                                            <td><?= $ds['kd_jenis_barang'] ?></td>
                                             <td><?= $ds['merek'] ?></td>
                                             <td><img width="60" src="img/<?= $ds['foto_merek'] ?>" alt=""></td>
                                             <td class="text-center">
                                                 <div class="btn-group">
-                                                    <a data-toggle="tooltip" data-placement="top" title="Edit" href="?page=viewMerek&edit&id=<?= $ds['kd_merek'] ?>" class="btn btn-info"><i class="fa fa-edit"></i></a>
+                                                    <a data-toggle="tooltip" data-placement="top" title="Edit" href="?page=viewMerek&edit&id=<?= $ds['kd_jenis_barang'] ?>" class="btn btn-info"><i class="fa fa-edit"></i></a>
                                                     <a data-toggle="tooltip" data-placement="top" title="Delete" href="#" class="btn btn-danger"><i class="fa fa-trash" id="btnDelete<?php echo $no; ?>" ></i></a>
                                                 </div>
                                             </td>
@@ -175,7 +175,7 @@
                                                         closeOnCancel: true
                                                       }, function(isConfirm) {
                                                         if (isConfirm) {
-                                                            window.location.href="?page=viewMerek&delete&id=<?php echo $ds['kd_merek'] ?>";
+                                                            window.location.href="?page=viewMerek&delete&id=<?php echo $ds['kd_jenis_barang'] ?>";
                                                         }
                                                       });
                                                     });

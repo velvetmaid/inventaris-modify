@@ -2,10 +2,10 @@
 $pg = new lsp();
 $pegawai = $pg->selectCount("table_user", "kd_user");
 $barang  = $pg->selectCount("table_barang", "kd_barang");
-$berhasil = $pg->selectCount("table_transaksi", "kd_transaksi");
-$assoc1   = $pg->selectCount("table_transaksi", "jumlah_beli");
-$dis  = $pg->getCountRows("table_distributor");
-$mer  = $pg->getCountRows("table_merek");
+$berhasil = $pg->selectCount("table_barang_keluar", "kd_barang_keluar");
+$assoc1   = $pg->selectCount("table_barang_keluar", "jumlah_beli");
+$dis  = $pg->getCountRows("table_supplier");
+$mer  = $pg->getCountRows("table_jenis_barang");
 $bar  = $pg->selectCount("table_barang", "kd_barang");
 $pegawai = $pg->selectCount("table_user", "kd_user");
 $stokmin = mysqli_query($con, "SELECT * FROM table_barang WHERE stok_barang < 5"); // Stok barang yang kurang dari 5

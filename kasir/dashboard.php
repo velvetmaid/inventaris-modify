@@ -2,8 +2,8 @@
 $pg = new lsp();
 $pegawai = $pg->selectCount("table_user", "kd_user");
 $barang  = $pg->selectCount("table_barang", "kd_barang");
-$berhasil = $pg->selectCount("table_transaksi", "kd_transaksi");
-$assoc1   = $pg->selectCount("table_transaksi", "jumlah_beli");
+$berhasil = $pg->selectCount("table_barang_keluar", "kd_barang_keluar");
+$assoc1   = $pg->selectCount("table_barang_keluar", "jumlah_beli");
 ?>
 <section class="au-breadcrumb m-t-75">
     <div class="section__content section__content--p30">

@@ -1,14 +1,14 @@
 <?php 
     $trans     = new lsp();
-    $transkode = $trans->autokode("table_transaksi","kd_transaksi","TR");
-    $antrian   = $trans->autokode("table_pretransaksi","kd_pretransaksi","AN");
+    $transkode = $trans->autokode("table_barang_keluar","kd_barang_keluar","TR");
+    $antrian   = $trans->autokode("table_antrian","kd_antrian","AN");
     $barangs   = $trans->select("table_barang");
     if (isset($_GET['getItem'])) {
         $id = $_GET['id'];
         $dataR = $trans->selectWhere("table_barang","kd_barang",$id);
     }
-    $sum       = $trans->selectSum("table_pretransaksi","sub_total");
-    $sql2      = "SELECT COUNT(kd_pretransaksi) as count FROM table_pretransaksi WHERE kd_transaksi = '$transkode'";
+    $sum       = $trans->selectSum("table_antrian","sub_total");
+    $sql2      = "SELECT COUNT(kd_antrian) as count FROM table_antrian WHERE kd_barang_keluar = '$transkode'";
     $exec2     = mysqli_query($con,$sql2);
     $assoc2    = mysqli_fetch_assoc($exec2);
 
@@ -16,13 +16,13 @@
         if (!isset($_SESSION['transaksi'])) {
             $_SESSION['transaksi'] = true;
         }
-        $kd_transaksi    = $_POST['kd_transaksi'];
-        $kd_pretransaksi = $_POST['kd_pretransaksi'];
+        $kd_barang_keluar    = $_POST['kd_barang_keluar'];
+        $kd_antrian = $_POST['kd_antrian'];
         $barang          = $_POST['kd_barang'];
         $jumlah          = $_POST['jumlah'];
         $total           = $_POST['total'];
 
-        if ($kd_transaksi == "" || $kd_pretransaksi == "" || $barang == "" || $jumlah == "" || $total == "") {
+        if ($kd_barang_keluar == "" || $kd_antrian == "" || $barang == "" || $jumlah == "" || $total == "") {
             $response = ['response'=>'negative','alert'=>'Lengkapi field'];
         }else{
             if ($jumlah < 1) {
@@ -32,18 +32,18 @@
                 if ($sisa['stok_barang'] < $jumlah) {
                     $response = ['response'=>'negative','alert'=>'Stok tersisa '.$sisa['stok_barang']];
                 }else{
-                    $sql = "SELECT * FROM table_pretransaksi WHERE kd_transaksi = '$kd_transaksi' AND kd_barang = '$barang'";
+                    $sql = "SELECT * FROM table_antrian WHERE kd_barang_keluar = '$kd_barang_keluar' AND kd_barang = '$barang'";
                     $exe = mysqli_query($con,$sql);
                     $num = mysqli_num_rows($exe);
                     $dta = mysqli_fetch_assoc($exe);
                     if ($num > 0) {
                         $jumlah = $dta['jumlah'] + $jumlah;
                         $value = "jumlah='$jumlah'";
-                        $insert = $trans->update("table_pretransaksi",$value,"kd_transaksi = '$kd_transaksi' AND kd_barang",$barang,"?page=kasirTransaksi");
+                        $insert = $trans->update("table_antrian",$value,"kd_barang_keluar = '$kd_barang_keluar' AND kd_barang",$barang,"?page=kasirTransaksi");
                         header("location:pageManager.php?page=kasirTransaksi");
                     }else{
-                        $value = "'$kd_pretransaksi','$kd_transaksi','$barang','$jumlah','$total'";
-                        $insert = $trans->insert("table_pretransaksi",$value,"?page=kasirTransaksi");
+                        $value = "'$kd_antrian','$kd_barang_keluar','$barang','$jumlah','$total'";
+                        $insert = $trans->insert("table_antrian",$value,"?page=kasirTransaksi");
                         header("location:pageManager.php?page=kasirTransaksi");
                     }
                 }
@@ -53,8 +53,8 @@
 
     if (isset($_GET['delete'])) {
         $id       = $_GET['id'];
-        $where    = "kd_pretransaksi";
-        $response = $trans->delete("table_pretransaksi",$where,$id,"?page=kasirTransaksi");
+        $where    = "kd_antrian";
+        $response = $trans->delete("table_antrian",$where,$id,"?page=kasirTransaksi");
     }
  ?>
 <div class="main-content">
@@ -71,11 +71,11 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="">Kode Barang Keluar</label>
-                                    <input style="font-weight: bold; color: red;" type="text" class="form-control" value="<?= $transkode; ?>" readonly name="kd_transaksi">
+                                    <input style="font-weight: bold; color: red;" type="text" class="form-control" value="<?= $transkode; ?>" readonly name="kd_barang_keluar">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="">Kode Antrian</label>
-                                    <input style="font-weight: bold; color: red;" type="text" class="form-control" value="<?= $antrian; ?>" readonly name="kd_pretransaksi" id="antrian">
+                                    <input style="font-weight: bold; color: red;" type="text" class="form-control" value="<?= $antrian; ?>" readonly name="kd_antrian" id="antrian">
                                 </div>
                             </div>
                             <br>
@@ -129,9 +129,9 @@
                             <br><br>
                             <?php
                                 $kr        = new lsp();
-                                $transkode = $kr->autokode("table_transaksi","kd_transaksi","TR");
-                                $datas     = $kr->querySelect("SELECT * FROM transaksi WHERE kd_transaksi = '$transkode'");
-                                $sql       = "SELECT SUM(sub_total) as sub FROM table_pretransaksi WHERE kd_transaksi = '$transkode'";
+                                $transkode = $kr->autokode("table_barang_keluar","kd_barang_keluar","TR");
+                                $datas     = $kr->querySelect("SELECT * FROM transaksi WHERE kd_barang_keluar = '$transkode'");
+                                $sql       = "SELECT SUM(sub_total) as sub FROM table_antrian WHERE kd_barang_keluar = '$transkode'";
                                 $exec      = mysqli_query($con,$sql);
                                 $assoc     = mysqli_fetch_assoc($exec);
 
@@ -149,7 +149,7 @@
                                         $no = 1;
                                         foreach($datas as $dd){ ?>
                                         <tr>
-                                            <td><?= $dd['kd_pretransaksi']; ?></td>
+                                            <td><?= $dd['kd_antrian']; ?></td>
                                             <td><?= $dd['nama_barang']; ?></td>
                                             <td><?= $dd['jumlah']; ?></td>
                                             <td><?= $dd['sub_total']; ?></td>
@@ -171,7 +171,7 @@
                                                     closeOnCancel: true
                                                 },function(isConfirm){
                                                     if (isConfirm) {
-                                                        window.location.href="?page=kasirTransaksi&delete&id=<?= $dd['kd_pretransaksi']; ?>";
+                                                        window.location.href="?page=kasirTransaksi&delete&id=<?= $dd['kd_antrian']; ?>";
                                                     }
                                                 })
                                             })

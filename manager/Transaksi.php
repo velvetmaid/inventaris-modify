@@ -132,7 +132,7 @@ if (isset($_GET['id'])) {
                                     <?php endif ?>
                                     <?php if (!isset($_GET['id'])) : ?>
 
-                                          <div class="au-card-title" style="background-image:url('images/bg-title-01.jpg');">
+                                          <div class="au-card-title" >
                                                 <div class="bg-overlay bg-overlay--blue"></div>
                                                 <h3>
                                                       <i class="zmdi zmdi-account-calendar"></i>Data Barang Keluar

@@ -53,7 +53,7 @@ if (isset($_POST['getSimpan'])) {
                 <div class="col-md-12">
                     <form method="post" enctype="multipart/form-data">
                         <div class="card">
-                            <div class="au-card-title" style="background-image:url('images/bg-title-01.jpg');">
+                            <div class="au-card-title" >
                                 <div class="bg-overlay bg-overlay--blue"></div>
                                 <h3>
                                     <i class="zmdi zmdi-account-calendar"></i>Data Barang Masuk

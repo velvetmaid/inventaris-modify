@@ -3,7 +3,11 @@
 $hostname = "localhost";
 $username = "camieux";
 $password = "viper666";
-$database = "beligo_db";
+$database = "kencanaart";
+// $hostname = "localhost";
+// $username = "root";
+// $password = "";
+// $database = "kencanaart";
 $con = mysqli_connect($hostname, $username, $password, $database, 3306) or die("Connection Corrupt");
 
 $rg = new lsp();

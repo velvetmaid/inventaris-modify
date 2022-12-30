@@ -65,7 +65,7 @@ if (isset($_POST['getSimpan'])) {
                                             <select name="merek_barang" class="form-control">
                                                 <option value=" ">Pilih Jenis Barang</option>
                                                 <?php foreach ($getMerek as $mr) { ?>
-                                                    <option value="<?= $mr['kd_jenis_barang'] ?>"><?= $mr['merek'] ?></option>
+                                                    <option value="<?= $mr['kd_jenis_barang'] ?>"><?= $mr['nama_jenis_barang'] ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>

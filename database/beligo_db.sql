@@ -28,14 +28,14 @@ SET time_zone = "+00:00";
 -- (Lihat di bawah untuk tampilan aktual)
 --
 CREATE TABLE `detailbarang` (
-`foto_merek` varchar(50)
+`foto_jenis_barang` varchar(50)
 ,`gambar` varchar(255)
 ,`harga_barang` int
 ,`kd_barang` varchar(7)
 ,`kd_supplier` varchar(7)
 ,`kd_jenis_barang` varchar(7)
 ,`keterangan` varchar(200)
-,`merek` varchar(30)
+,`nama_jenis_barang` varchar(30)
 ,`nama_barang` varchar(40)
 ,`nama_supplier` varchar(40)
 ,`no_telp` varchar(13)
@@ -51,7 +51,7 @@ CREATE TABLE `detailbarang` (
 -- (Lihat di bawah untuk tampilan aktual)
 --
 CREATE TABLE `detailbarangmasuk` (
-`foto_merek` varchar(50)
+`foto_jenis_barang` varchar(50)
 ,`gambar` varchar(255)
 ,`harga_barang` int
 ,`kd_barang` varchar(7)
@@ -59,7 +59,7 @@ CREATE TABLE `detailbarangmasuk` (
 ,`kd_supplier` varchar(7)
 ,`kd_jenis_barang` varchar(7)
 ,`keterangan` varchar(200)
-,`merek` varchar(30)
+,`nama_jenis_barang` varchar(30)
 ,`nama_barang` varchar(40)
 ,`nama_supplier` varchar(40)
 ,`no_telp` varchar(13)
@@ -175,15 +175,15 @@ INSERT INTO `table_supplier` (`kd_supplier`, `nama_supplier`, `alamat`, `no_telp
 
 CREATE TABLE `table_jenis_barang` (
   `kd_jenis_barang` varchar(7) NOT NULL,
-  `merek` varchar(30) NOT NULL,
-  `foto_merek` varchar(50) NOT NULL
+  `nama_jenis_barang` varchar(30) NOT NULL,
+  `foto_jenis_barang` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `table_jenis_barang`
 --
 
-INSERT INTO `table_jenis_barang` (`kd_jenis_barang`, `merek`, `foto_merek`) VALUES
+INSERT INTO `table_jenis_barang` (`kd_jenis_barang`, `nama_jenis_barang`, `foto_jenis_barang`) VALUES
 ('ME001', 'Nutrifood', '1537759572977.jpg'),
 ('ME002', 'CBA', '1671974713120.png'),
 ('ME003', 'Indofood', '1537761246445.jpg'),
@@ -319,7 +319,7 @@ CREATE TABLE `transaksi_terbaru` (
 --
 DROP TABLE IF EXISTS `detailbarang`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `detailbarang`  AS SELECT `table_barang`.`kd_barang` AS `kd_barang`, `table_barang`.`nama_barang` AS `nama_barang`, `table_barang`.`kd_jenis_barang` AS `kd_jenis_barang`, `table_barang`.`kd_supplier` AS `kd_supplier`, `table_barang`.`tanggal_masuk` AS `tanggal_masuk`, `table_barang`.`harga_barang` AS `harga_barang`, `table_barang`.`stok_barang` AS `stok_barang`, `table_barang`.`stok_masuk` AS `stok_masuk`, `table_barang`.`gambar` AS `gambar`, `table_barang`.`keterangan` AS `keterangan`, `table_jenis_barang`.`merek` AS `merek`, `table_jenis_barang`.`foto_merek` AS `foto_merek`, `table_supplier`.`nama_supplier` AS `nama_supplier`, `table_supplier`.`no_telp` AS `no_telp` FROM ((`table_barang` join `table_jenis_barang` on((`table_barang`.`kd_jenis_barang` = `table_jenis_barang`.`kd_jenis_barang`))) join `table_supplier` on((`table_barang`.`kd_supplier` = `table_supplier`.`kd_supplier`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `detailbarang`  AS SELECT `table_barang`.`kd_barang` AS `kd_barang`, `table_barang`.`nama_barang` AS `nama_barang`, `table_barang`.`kd_jenis_barang` AS `kd_jenis_barang`, `table_barang`.`kd_supplier` AS `kd_supplier`, `table_barang`.`tanggal_masuk` AS `tanggal_masuk`, `table_barang`.`harga_barang` AS `harga_barang`, `table_barang`.`stok_barang` AS `stok_barang`, `table_barang`.`stok_masuk` AS `stok_masuk`, `table_barang`.`gambar` AS `gambar`, `table_barang`.`keterangan` AS `keterangan`, `table_jenis_barang`.`nama_jenis_barang` AS `nama_jenis_barang`, `table_jenis_barang`.`foto_jenis_barang` AS `foto_jenis_barang`, `table_supplier`.`nama_supplier` AS `nama_supplier`, `table_supplier`.`no_telp` AS `no_telp` FROM ((`table_barang` join `table_jenis_barang` on((`table_barang`.`kd_jenis_barang` = `table_jenis_barang`.`kd_jenis_barang`))) join `table_supplier` on((`table_barang`.`kd_supplier` = `table_supplier`.`kd_supplier`))) ;
 
 -- --------------------------------------------------------
 
@@ -328,7 +328,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `detailbarangmasuk`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `detailbarangmasuk`  AS SELECT `table_barang_masuk`.`kd_barang_masuk` AS `kd_barang_masuk`, `table_barang_masuk`.`kd_barang` AS `kd_barang`, `table_barang_masuk`.`nama_barang` AS `nama_barang`, `table_barang_masuk`.`kd_jenis_barang` AS `kd_jenis_barang`, `table_barang_masuk`.`kd_supplier` AS `kd_supplier`, `table_barang_masuk`.`tanggal_masuk` AS `tanggal_masuk`, `table_barang_masuk`.`harga_barang` AS `harga_barang`, `table_barang_masuk`.`stok_barang` AS `stok_barang`, `table_barang_masuk`.`stok_masuk` AS `stok_masuk`, `table_barang_masuk`.`gambar` AS `gambar`, `table_barang_masuk`.`keterangan` AS `keterangan`, `table_jenis_barang`.`merek` AS `merek`, `table_jenis_barang`.`foto_merek` AS `foto_merek`, `table_supplier`.`nama_supplier` AS `nama_supplier`, `table_supplier`.`no_telp` AS `no_telp` FROM ((`table_barang_masuk` join `table_jenis_barang` on((`table_barang_masuk`.`kd_jenis_barang` = `table_jenis_barang`.`kd_jenis_barang`))) join `table_supplier` on((`table_barang_masuk`.`kd_supplier` = `table_supplier`.`kd_supplier`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `detailbarangmasuk`  AS SELECT `table_barang_masuk`.`kd_barang_masuk` AS `kd_barang_masuk`, `table_barang_masuk`.`kd_barang` AS `kd_barang`, `table_barang_masuk`.`nama_barang` AS `nama_barang`, `table_barang_masuk`.`kd_jenis_barang` AS `kd_jenis_barang`, `table_barang_masuk`.`kd_supplier` AS `kd_supplier`, `table_barang_masuk`.`tanggal_masuk` AS `tanggal_masuk`, `table_barang_masuk`.`harga_barang` AS `harga_barang`, `table_barang_masuk`.`stok_barang` AS `stok_barang`, `table_barang_masuk`.`stok_masuk` AS `stok_masuk`, `table_barang_masuk`.`gambar` AS `gambar`, `table_barang_masuk`.`keterangan` AS `keterangan`, `table_jenis_barang`.`nama_jenis_barang` AS `nama_jenis_barang`, `table_jenis_barang`.`foto_jenis_barang` AS `foto_jenis_barang`, `table_supplier`.`nama_supplier` AS `nama_supplier`, `table_supplier`.`no_telp` AS `no_telp` FROM ((`table_barang_masuk` join `table_jenis_barang` on((`table_barang_masuk`.`kd_jenis_barang` = `table_jenis_barang`.`kd_jenis_barang`))) join `table_supplier` on((`table_barang_masuk`.`kd_supplier` = `table_supplier`.`kd_supplier`))) ;
 
 -- --------------------------------------------------------
 

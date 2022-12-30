@@ -21,7 +21,7 @@
 
     if (isset($_POST['getSave'])) {
         $kode_merek = $me->validateHtml($_POST['kode_merek']);
-        $merek      = $me->validateHtml($_POST['merek']);
+        $merek      = $me->validateHtml($_POST['nama_jenis_barang']);
         $foto = $_FILES['foto'];
 
         if ($kode_merek == "" || $merek == "") {
@@ -38,7 +38,7 @@
 
     if (isset($_POST['getUpdate'])) {
         $kode_merek = $me->validateHtml($_POST['kode_merek']);
-        $merek      = $me->validateHtml($_POST['merek']);
+        $merek      = $me->validateHtml($_POST['nama_jenis_barang']);
 
         if ($_FILES['foto']['name'] == "") {
              $value    = "kd_jenis_barang='$kode_merek',merek='$merek'";
@@ -46,7 +46,7 @@
         }else{
             $response = $me->validateImage();
             if ($response['types'] == "true") {
-                $value = "kd_jenis_barang='$kode_merek',merek='$merek', foto_merek='$response[image]'";
+                $value = "kd_jenis_barang='$kode_merek',merek='$merek', foto_jenis_barang='$response[image]'";
                 $response = $me->update($table,$value,"kd_jenis_barang",$_GET['id'],"?page=viewMerek");
             }else{
                 $response = ['response'=>'negative','alert'=>'Error Gambar'];
@@ -106,13 +106,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="">Nama Jenis Barang</label>
-                                    <input type="text" class="form-control form-control-sm" name="merek" value="<?php echo @$editData['merek'] ?>">
+                                    <input type="text" class="form-control form-control-sm" name="nama_jenis_barang" value="<?php echo @$editData['nama_jenis_barang'] ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Foto</label>
                                     <input type="file" name="foto" id="gambar" class="form-control-file">
                                     <div style="padding-bottom: 15px;">
-                                        <img alt="" src="img/<?= @$editData['foto_merek'] ?>" width="120" class="img-responsive" id="pict">
+                                        <img alt="" src="img/<?= @$editData['foto_jenis_barang'] ?>" width="120" class="img-responsive" id="pict">
                                     </div>
                                 </div>
                                 <hr>
@@ -151,8 +151,8 @@
                                          ?>
                                        <tr>
                                             <td><?= $ds['kd_jenis_barang'] ?></td>
-                                            <td><?= $ds['merek'] ?></td>
-                                            <td><img width="60" src="img/<?= $ds['foto_merek'] ?>" alt=""></td>
+                                            <td><?= $ds['nama_jenis_barang'] ?></td>
+                                            <td><img width="60" src="img/<?= $ds['foto_jenis_barang'] ?>" alt=""></td>
                                             <td class="text-center">
                                                 <div class="btn-group">
                                                     <a data-toggle="tooltip" data-placement="top" title="Edit" href="?page=viewMerek&edit&id=<?= $ds['kd_jenis_barang'] ?>" class="btn btn-info"><i class="fa fa-edit"></i></a>

@@ -86,9 +86,9 @@ if (isset($_POST['getSimpan'])) {
                                                     <option value=" ">Pilih Jenis Barang</option>
                                                     <?php foreach ($getMerek as $mr) { ?>
                                                         <?php if ($mr['kd_jenis_barang'] == $data['kd_jenis_barang']) { ?>
-                                                            <option value="<?= $mr['kd_jenis_barang'] ?>" selected><?= $mr['merek'] ?></option>
+                                                            <option value="<?= $mr['kd_jenis_barang'] ?>" selected><?= $mr['nama_jenis_barang'] ?></option>
                                                         <?php } else { ?>
-                                                            <option value="<?= $mr['kd_jenis_barang'] ?>"><?= $mr['merek'] ?></option>
+                                                            <option value="<?= $mr['kd_jenis_barang'] ?>"><?= $mr['nama_jenis_barang'] ?></option>
                                                         <?php } ?>
                                                     <?php } ?>
                                                 </select>

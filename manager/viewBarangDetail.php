@@ -12,7 +12,7 @@ if ($_SESSION['level'] != "Manager") {
 				<!-- <div class="col-md-4">
 					<div class="card">
 						<div class="card-header">
-							<img class="align-self-center mr-3" width="70" src="img/<?php echo $detail['foto_merek'] ?>" alt="">
+							<img class="align-self-center mr-3" width="70" src="img/<?php echo $detail['foto_jenis_barang'] ?>" alt="">
 							<h4 class="text-right"><?= $detail['nama_barang'] ?></h4>
 						</div>
 						<div class="card-body">
@@ -45,7 +45,7 @@ if ($_SESSION['level'] != "Manager") {
 								<tr>
 									<td>Jenis Barang</td>
 									<td>:</td>
-									<td><?php echo $detail['merek']; ?></td>
+									<td><?php echo $detail['nama_jenis_barang']; ?></td>
 								</tr>
 								<tr>
 									<td>Supplier</td>

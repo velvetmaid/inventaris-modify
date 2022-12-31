@@ -8,7 +8,7 @@ $barang  = $dash->selectCount("table_barang", "kd_barang");
 $berhasil = $dash->selectCount("table_barang_keluar", "kd_barang_keluar");
 $assoc1   = $dash->selectCount("table_barang_keluar", "jumlah_beli");
 
-if ($_SESSION['level'] != "Admin") {
+if ($_SESSION['level'] != "Staff") {
     header("location:../index.php");
 }
 ?>

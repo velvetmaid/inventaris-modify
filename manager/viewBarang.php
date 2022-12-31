@@ -1,7 +1,7 @@
 <?php
 $qb = new lsp();
 $dataB = $qb->select("detailbarang");
-if ($_SESSION['level'] != "Manager") {
+if ($_SESSION['level'] != "Atasan") {
     header("location:../index.php");
 }
 if (isset($_GET['delete'])) {
@@ -104,7 +104,7 @@ if (isset($_GET['delete'])) {
 
                                                         <a href="?page=viewBarangEdit&edit&id=<?= $ds['kd_barang'] ?>" data-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-info"><i class="fa fa-edit"></i></a>
 
-                                                        <a data-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-danger"><i class="fa fa-trash" style="color: white;" id="btdelete<?php echo $no; ?>"></i></a>
+                                                        <!-- <a data-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-danger"><i class="fa fa-trash" style="color: white;" id="btdelete<?php echo $no; ?>"></i></a> -->
                                                         </a>
                                                     </div>
                                                 </td>

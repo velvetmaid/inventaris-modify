@@ -127,8 +127,8 @@ $passDec = base64_decode($pass);
                                 <div class="form-group">
                                     <label for="level" class="control-label mb-1">Level</label>
                                     <select name="level" class="form-control mb-1">
-                                        <option value="Admin">Admin</option>
-                                        <option value="Manager">Manager</option>
+                                        <option value="Staff">Staff</option>
+                                        <option value="Atasan">Atasan</option>
                                     </select>
                                 </div>
                                 <?php if (isset($_GET['edit'])) : ?>

@@ -106,8 +106,8 @@ CREATE TABLE `table_antrian` (
 --
 
 INSERT INTO `table_antrian` (`kd_antrian`, `kd_barang_keluar`, `kd_barang`, `jumlah`, `sub_total`) VALUES
-('AN001', 'TR001', 'BR001', 52, 23400000),
-('AN002', 'TR002', 'BR001', 4, 1800000);
+('AN001', 'BK001', 'BR001', 52, 23400000),
+('AN002', 'BK002', 'BR001', 4, 1800000);
 
 --
 -- Trigger `table_antrian`
@@ -155,9 +155,9 @@ CREATE TABLE `table_barang` (
 --
 
 INSERT INTO `table_barang` (`kd_barang`, `nama_barang`, `kd_jenis_barang`, `kd_supplier`, `tanggal_masuk`, `harga_barang`, `stok_barang`, `stok_masuk`, `gambar`, `keterangan`) VALUES
-('BR001', 'Monitor', 'ME001', 'DS001', '2022-12-29', 450000, 0, 15, '1672327721993.png', 'Monitor Samsung 22Inch'),
-('BR002', 'Keyboard', 'ME003', 'DS001', '2022-12-29', 250000, 15, 15, '1672329244593.png', 'Mechanical'),
-('BR003', 'Permen', 'ME001', 'DS001', '2022-12-29', 500, 25, 25, '1672329538159.png', 'Permen'),
+('BR001', 'Monitor', 'JN001', 'SP001', '2022-12-29', 450000, 0, 15, '1672327721993.png', 'Monitor Samsung 22Inch'),
+('BR002', 'Keyboard', 'JN003', 'SP001', '2022-12-29', 250000, 15, 15, '1672329244593.png', 'Mechanical'),
+('BR003', 'Permen', 'JN001', 'SP001', '2022-12-29', 500, 25, 25, '1672329538159.png', 'Permen'),
 ('BR004', 'Router Cable Extension', 'JN006', 'SP002', '2022-12-31', 25000, 500, 500, '1672420770448.png', 'Router Cable Extension Description');
 
 -- --------------------------------------------------------
@@ -179,8 +179,8 @@ CREATE TABLE `table_barang_keluar` (
 --
 
 INSERT INTO `table_barang_keluar` (`kd_barang_keluar`, `kd_user`, `jumlah_beli`, `total_harga`, `tanggal_beli`) VALUES
-('TR001', 'US001', 52, 23400000, '2022-12-29'),
-('TR002', 'US001', 4, 1800000, '2022-12-29');
+('BK001', 'US001', 52, 23400000, '2022-12-29'),
+('BK002', 'US001', 4, 1800000, '2022-12-29');
 
 -- --------------------------------------------------------
 
@@ -207,12 +207,12 @@ CREATE TABLE `table_barang_masuk` (
 --
 
 INSERT INTO `table_barang_masuk` (`kd_barang_masuk`, `kd_barang`, `nama_barang`, `kd_jenis_barang`, `kd_supplier`, `tanggal_masuk`, `harga_barang`, `stok_barang`, `stok_masuk`, `gambar`, `keterangan`) VALUES
-('BM001', 'BR001', 'Monitor', 'ME001', 'DS001', '2022-12-29', 450000, 15, 15, '', 'Monitor Samsung 22Inch'),
-('BM002', 'BR001', 'Monitor', 'ME001', 'DS001', '2022-12-29', 450000, 40, 25, '', 'Monitor Samsung 22Inch'),
-('BM003', 'BR001', 'Monitor', 'ME001', 'DS001', '2022-12-29', 450000, 45, 5, '', 'Monitor Samsung 22Inch'),
-('BM004', 'BR002', 'Keyboard', 'ME003', 'DS001', '2022-12-29', 120000, 10, 10, '', 'Mechanical'),
-('BM005', 'BR002', 'Keyboard', 'ME003', 'DS001', '2022-12-29', 250000, 15, 15, '', 'Mechanical'),
-('BM006', 'BR003', 'Permen', 'ME001', 'DS001', '2022-12-29', 500, 25, 25, '', 'Permen'),
+('BM001', 'BR001', 'Monitor', 'JN001', 'SP001', '2022-12-29', 450000, 15, 15, '', 'Monitor Samsung 22Inch'),
+('BM002', 'BR001', 'Monitor', 'JN001', 'SP001', '2022-12-29', 450000, 40, 25, '', 'Monitor Samsung 22Inch'),
+('BM003', 'BR001', 'Monitor', 'JN001', 'SP001', '2022-12-29', 450000, 45, 5, '', 'Monitor Samsung 22Inch'),
+('BM004', 'BR002', 'Keyboard', 'JN003', 'SP001', '2022-12-29', 120000, 10, 10, '', 'Mechanical'),
+('BM005', 'BR002', 'Keyboard', 'JN003', 'SP001', '2022-12-29', 250000, 15, 15, '', 'Mechanical'),
+('BM006', 'BR003', 'Permen', 'JN001', 'SP001', '2022-12-29', 500, 25, 25, '', 'Permen'),
 ('BM007', 'BR004', 'Router Cable Extension', 'JN006', 'SP002', '2022-12-31', 25000, 500, 500, '', 'Router Cable Extension Description');
 
 -- --------------------------------------------------------
@@ -233,11 +233,11 @@ CREATE TABLE `table_jenis_barang` (
 
 INSERT INTO `table_jenis_barang` (`kd_jenis_barang`, `nama_jenis_barang`, `foto_jenis_barang`) VALUES
 ('JN006', 'Electronics', '1672420727501.png'),
-('ME001', 'Nutrifood', '1537759572977.jpg'),
-('ME002', 'CBA', '1671974713120.png'),
-('ME003', 'Indofood', '1537761246445.jpg'),
-('ME004', 'WEWE', '1539528847974.png'),
-('ME005', 'Barrons', '1548945399328.png');
+('JN001', 'Nutrifood', '1537759572977.jpg'),
+('JN002', 'CBA', '1671974713120.png'),
+('JN003', 'Indofood', '1537761246445.jpg'),
+('JN004', 'WEWE', '1539528847974.png'),
+('JN005', 'Barrons', '1548945399328.png');
 
 -- --------------------------------------------------------
 
@@ -257,7 +257,7 @@ CREATE TABLE `table_supplier` (
 --
 
 INSERT INTO `table_supplier` (`kd_supplier`, `nama_supplier`, `alamat`, `no_telp`) VALUES
-('DS001', 'Lee Dorian', 'New York', '08888888888'),
+('SP001', 'Four Loko Man', 'Illionis', '08888888888'),
 ('SP002', 'Alice', 'Nevada State', '08123123123');
 
 -- --------------------------------------------------------
@@ -272,7 +272,7 @@ CREATE TABLE `table_user` (
   `username` varchar(25) NOT NULL,
   `password` varchar(25) NOT NULL,
   `foto_user` varchar(50) NOT NULL,
-  `level` enum('Admin','Kasir','Manager') NOT NULL
+  `level` enum('Staff','Kasir','Atasan') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -280,11 +280,10 @@ CREATE TABLE `table_user` (
 --
 
 INSERT INTO `table_user` (`kd_user`, `nama_user`, `username`, `password`, `foto_user`, `level`) VALUES
-('US001', 'M. Bayu Pradana', 'manager', 'bWFuYWdlcjEyMw==', '1538303665653.png', 'Manager'),
-('US002', 'Fajar Subeki', 'admin123', 'YWRtaW4xMjM=', '153777087384.png', 'Admin'),
-('US003', 'Dinda Nur Insani', 'kasir123', 'a2FzaXIxMjM=', '1537840377928.png', 'Kasir'),
-('US005', 'newyorknyc', 'newyorknyc', 'bmV3eW9ya255Yw==', '167197400385.jpeg', 'Manager'),
-('US006', 'Anon', 'anon123', 'YW5vbjEyMw==', '1672067482125.png', 'Manager');
+('US001', 'Lee Dorian', 'atasan', 'bWFuYWdlcjEyMw==', '1538303665653.png', 'Atasan'),
+('US002', 'Fajar Subeki', 'admin123', 'YWRtaW4xMjM=', '153777087384.png', 'Staff'),
+('US005', 'newyorknyc', 'newyorknyc', 'bmV3eW9ya255Yw==', '167197400385.jpeg', 'Atasan'),
+('US006', 'Anon', 'anon123', 'YW5vbjEyMw==', '1672067482125.png', 'Atasan');
 
 -- --------------------------------------------------------
 

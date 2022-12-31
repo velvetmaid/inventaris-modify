@@ -1,6 +1,6 @@
 <?php 
     $me       = new lsp();
-    if ($_SESSION['level'] != "Manager") {
+    if ($_SESSION['level'] != "Atasan") {
     header("location:../index.php");
     }
     $table    = "table_jenis_barang";
@@ -131,7 +131,7 @@
                     <div class="col-md-8">
                         <div class="card">
                         <div class="card-header">
-                            <strong class="card-title mb-3">Data Supplier</strong>
+                            <strong class="card-title mb-3">Data Jenis Barang</strong>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -156,7 +156,7 @@
                                             <td class="text-center">
                                                 <div class="btn-group">
                                                     <a data-toggle="tooltip" data-placement="top" title="Edit" href="?page=viewMerek&edit&id=<?= $ds['kd_jenis_barang'] ?>" class="btn btn-info"><i class="fa fa-edit"></i></a>
-                                                    <a data-toggle="tooltip" data-placement="top" title="Delete" href="#" class="btn btn-danger"><i class="fa fa-trash" id="btnDelete<?php echo $no; ?>" ></i></a>
+                                                    <!-- <a data-toggle="tooltip" data-placement="top" title="Delete" href="#" class="btn btn-danger"><i class="fa fa-trash" id="btnDelete<?php echo $no; ?>" ></i></a> -->
                                                 </div>
                                             </td>
                                        </tr>

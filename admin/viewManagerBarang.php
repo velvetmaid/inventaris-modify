@@ -1,7 +1,7 @@
 <?php 
 	$qb = new lsp();
 	$dataB = $qb->select("detailbarang");
-	if ($_SESSION['level'] != "Manager") {
+	if ($_SESSION['level'] != "Atasan") {
     header("location:../index.php");
   	}
  ?>

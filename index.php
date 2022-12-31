@@ -5,9 +5,9 @@
     $lg = new lsp();
     
     if($lg->sessionCheck() == "true"){
-        if($_SESSION['level'] == "Admin"){
+        if($_SESSION['level'] == "Staff"){
             header("location:pageAdmin.php");
-        }else if($_SESSION['level'] == "Manager"){
+        }else if($_SESSION['level'] == "Atasan"){
             header("location:pageManager.php");
         }else if($_SESSION['level'] == "Kasir"){
             header("location:pageAdmin.php");
@@ -21,9 +21,9 @@
             if ($response['response'] == "positive") {
                 $_SESSION['username'] = $_POST['username'];
                 $_SESSION['level'] = $response['level'];
-                if ($response['level'] == "Admin") {
+                if ($response['level'] == "Staff") {
                     $response = $lg->redirect("pageAdmin.php");
-                }else if($response['level'] == "Manager"){
+                }else if($response['level'] == "Atasan"){
                     $response = $lg->redirect("pageManager.php");
                 }else if ($response['level'] == "Kasir") {
                     $response = $lg->redirect("pageAdmin.php");

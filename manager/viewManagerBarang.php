@@ -3,7 +3,7 @@
 <?php
 $qb = new lsp();
 $dataB = $qb->select("detailbarangmasuk");
-if ($_SESSION['level'] != "Manager") {
+if ($_SESSION['level'] != "Atasan") {
 	header("location:../index.php");
 }
 if (isset($_GET['delete'])) {

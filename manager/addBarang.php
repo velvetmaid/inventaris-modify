@@ -1,6 +1,6 @@
 <?php
 $br = new lsp();
-if ($_SESSION['level'] != "Manager") {
+if ($_SESSION['level'] != "Atasan") {
     header("location:../index.php");
 }
 $table = "table_barang";

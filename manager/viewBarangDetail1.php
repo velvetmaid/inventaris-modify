@@ -1,7 +1,7 @@
 <?php
 $dt = new lsp();
 $detail = $dt->selectWhere("detailbarang", "kd_barang", $_GET['id']);
-if ($_SESSION['level'] != "Manager") {
+if ($_SESSION['level'] != "Atasan") {
     header("location:../index.php");
 }
 ?>

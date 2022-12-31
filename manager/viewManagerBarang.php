@@ -26,6 +26,9 @@ if (isset($_GET['delete'])) {
 		.action {
 			display: none;
 		}
+		.table {
+			width: 500px !important;
+		}
 	}
 </style>
 
@@ -59,7 +62,7 @@ if (isset($_GET['delete'])) {
 			<div class="row">
 				<div class="col-md-12">
 					<div class="card">
-						<div class="au-card-title" >
+						<div class="au-card-title">
 							<div class="bg-overlay bg-overlay--blue"></div>
 							<h3>
 								<i class="zmdi zmdi-account-calendar"></i>Semua Data Barang Masuk
@@ -74,8 +77,8 @@ if (isset($_GET['delete'])) {
 								<table id="example" class="table table-borderless table-striped table-earning">
 									<thead>
 										<tr>
-											<th>Kode barang masuk</th>
-											<th>Kode barang</th>
+											<th class="kode_id">Kode barang masuk</th>
+											<th class="kode_id">Kode barang</th>
 											<th>Nama barang</th>
 											<th>Jenis Barang</th>
 											<th>Supplier</th>

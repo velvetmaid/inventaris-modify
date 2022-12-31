@@ -148,7 +148,7 @@ if (isset($_GET['id'])) {
                                                 <thead>
                                                       <tr>
                                                             <th>Kode Barang Keluar</th>
-                                                            <th>Nama Kasir</th>
+                                                            <th>Nama</th>
                                                             <th>Jumlah Beli</th>
                                                             <th>Total Harga</th>
                                                             <th>Tanggal Beli</th>

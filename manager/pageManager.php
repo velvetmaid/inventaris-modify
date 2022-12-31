@@ -81,7 +81,7 @@ if (isset($_GET['logout'])) {
         <aside class="menu-sidebar2">
             <div class="logo">
                 <a href="#">
-                    <img src="images/icon/logo-white.png" alt="Cool Admin" />
+                    <img src="                     images/icon/logo.png" alt="Cool Admin" />
                 </a>
             </div>
             <div class="menu-sidebar2__content js-scrollbar1">
@@ -132,7 +132,7 @@ if (isset($_GET['logout'])) {
                         <div class="header-wrap2">
                             <div class="logo d-block d-lg-none">
                                 <a href="#">
-                                    <img src="images/icon/logo-white.png" alt="Cool Admin" />
+                                    <img src="                     images/icon/logo.png" alt="Cool Admin" />
                                 </a>
                             </div>
                             <div class="header-button2">
@@ -212,7 +212,7 @@ if (isset($_GET['logout'])) {
             <aside class="menu-sidebar2 js-right-sidebar d-block d-lg-none">
                 <div class="logo">
                     <a href="#">
-                        <img src="images/icon/logo-white.png" alt="Cool Admin" />
+                        <img src="                     images/icon/logo.png" alt="Cool Admin" />
                     </a>
                 </div>
                 <div class="menu-sidebar2__content js-scrollbar2">

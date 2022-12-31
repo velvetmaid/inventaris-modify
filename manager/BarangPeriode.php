@@ -77,24 +77,18 @@ if (isset($_POST['btnSearch'])) {
 									</thead>
 									<tbody>
 										<?php
-										if (count(@$dataB['data']) > 0) {
-											$no = 1;
-											foreach (@$dataB['data'] as $ds) { ?>
-												<tr>
-													<td><?= $ds['kd_barang'] ?></td>
-													<td><?= $ds['nama_barang'] ?></td>
-													<td><?= $ds['nama_jenis_barang'] ?></td>
-													<td><?= $ds['nama_supplier'] ?></td>
-													<td><?= $ds['tanggal_masuk'] ?></td>
-													<td><?= number_format($ds['harga_barang']) ?></td>
-													<td><?= $ds['stok_barang'] ?></td>
-												<?php $no++;
-											} ?>
-											<?php } else { ?>
-												<tr>
-													<td colspan="7" class="text-center">Tidak ada data</td>
-												</tr>
-											<?php } ?>
+										$no = 1;
+										foreach (@$dataB['data'] as $ds) { ?>
+											<tr>
+												<td><?= $ds['kd_barang'] ?></td>
+												<td><?= $ds['nama_barang'] ?></td>
+												<td><?= $ds['nama_jenis_barang'] ?></td>
+												<td><?= $ds['nama_supplier'] ?></td>
+												<td><?= $ds['tanggal_masuk'] ?></td>
+												<td><?= number_format($ds['harga_barang']) ?></td>
+												<td><?= $ds['stok_barang'] ?></td>
+											<?php $no++;
+										} ?>
 									</tbody>
 								</table>
 							</div>

@@ -22,7 +22,6 @@ if (isset($_GET['logout'])) {
 <head>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
-
     <link href="https://nightly.datatables.net/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
     <script src="https://nightly.datatables.net/js/jquery.dataTables.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.js"></script>
@@ -144,11 +143,11 @@ if (isset($_GET['logout'])) {
                         <div class="header-wrap2">
                             <div class="logo d-block d-lg-none">
                                 <a href="#">
-                                    <img src="                     images/icon/logo.png" alt="CoolAdmin" />
+                                    <img src="images/icon/logo.png" alt="CoolAdmin" />
                                 </a>
                             </div>
                             <div class="header-button2">
-                                <div class="header-button-item js-item-menu">
+                                <!-- <div class="header-button-item js-item-menu">
                                     <i class="zmdi zmdi-search"></i>
                                     <div class="search-dropdown js-dropdown">
                                         <form action="">
@@ -158,7 +157,7 @@ if (isset($_GET['logout'])) {
                                             </span>
                                         </form>
                                     </div>
-                                </div>
+                                </div> -->
                                 <!-- <div class="header-button-item has-noti js-item-menu">
                                     <i class="zmdi zmdi-notifications"></i>
                                     <div class="notifi-dropdown js-dropdown">

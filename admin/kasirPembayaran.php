@@ -12,7 +12,7 @@
 	$exec2     = mysqli_query($con,$sql2);
 	$assoc2    = mysqli_fetch_assoc($exec2);
 	if ($assoc2['count'] <= 0) {
-		header("location:PageAdmin.php?page=kasirTransaksi");
+		header("location:pageManager.php?page=kasirTransaksi");
 	}
 
 	if (isset($_POST['selesaiGet'])) {

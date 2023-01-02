@@ -159,9 +159,6 @@ if (isset($_POST['getUpdate'])) {
                                                     <div class="btn-group">
                                                         <a data-toggle="tooltip" data-placement="top" title="Edit" href="?page=viewDistributor&edit&id=<?= $ds['kd_supplier'] ?>" class="btn btn-info"><i class="fa fa-edit"></i></a>
                                                     </div>
-                                                    <div class="btn-group">
-                                                        <a id="btnDelete<?php echo $no; ?>" data-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-danger"><i style="color: #fff;" class="fa fa-trash"></i></a>
-                                                    </div>
                                                 </td>
                                             </tr>
                                             <script src="vendor/jquery-3.2.1.min.js"></script>

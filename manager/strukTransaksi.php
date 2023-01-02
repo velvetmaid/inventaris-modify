@@ -44,7 +44,7 @@ $jumlah_barang = $struk->selectSumWhere("transaksi", "jumlah", "kd_barang_keluar
 					<div class="card">
 						<div class="card-header">
 							<h4>Rincian Barang Keluar</h4>
-							<p>PT Inventory Indonesia</p>
+							<p>Kencana Art Shop</p>
 						</div>
 						<div class="card-body">
 							<div class="row">

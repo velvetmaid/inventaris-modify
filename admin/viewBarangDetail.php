@@ -1,6 +1,6 @@
 <?php
 $dt = new lsp();
-$detail = $dt->selectWhere("detailbarang", "kd_barang", $_GET['id']);
+$detail = $dt->selectWhere("detailbarangmasuk", "kd_barang_masuk", $_GET['id']);
 if ($_SESSION['level'] != "Staff") {
 	header("location:../index.php");
 }
@@ -9,7 +9,7 @@ if ($_SESSION['level'] != "Staff") {
 	<div class="section__content section__content--p30">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-md-4">
+				<!-- <div class="col-md-4">
 					<div class="card">
 						<div class="card-header">
 							<img class="align-self-center mr-3" width="70" src="img/<?php echo $detail['foto_jenis_barang'] ?>" alt="">
@@ -19,14 +19,19 @@ if ($_SESSION['level'] != "Staff") {
 							<img style="min-height: 200px; width: 100%; display: block;" src="img/<?php echo $detail['gambar'] ?>">
 						</div>
 					</div>
-				</div>
-				<div class="col-md-8">
+				</div> -->
+				<div class="col-md-10" style="margin: auto;">
 					<div class="card">
 						<div class="card-header">
 							<h3>Detail Barang</h3>
 						</div>
 						<div class="card-body">
 							<table class="table" cellpadding="10">
+								<tr>
+									<td>Kode Barang Masuk</td>
+									<td>:</td>
+									<td style="font-weight: bold; color: red;"><?php echo $detail['kd_barang_masuk']; ?></td>
+								</tr>
 								<tr>
 									<td>Kode Barang</td>
 									<td>:</td>
@@ -60,7 +65,7 @@ if ($_SESSION['level'] != "Staff") {
 								<tr>
 									<td>Stok</td>
 									<td>:</td>
-									<td><?php echo $detail['stok_barang'] ?></td>
+									<td><?php echo $detail['stok_masuk'] ?></td>
 								</tr>
 								<tr>
 									<td>Keterangan</td>
@@ -70,9 +75,9 @@ if ($_SESSION['level'] != "Staff") {
 							</table>
 						</div>
 					</div>
+					<a href="?page=kelBarang" class="btn btn-danger"><i class="fa fa-repeat"></i> Kembali</a>
 				</div>
 			</div>
-			<a href="?page=viewBarang" class="btn btn-danger"><i class="fa fa-repeat"></i> Kembali</a>
 		</div>
 	</div>
 </div>

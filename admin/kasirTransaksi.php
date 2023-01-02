@@ -22,7 +22,6 @@
         $jumlah          = $_POST['jumlah'];
         $total           = $_POST['total'];
 
-
         if ($kd_barang_keluar == "" || $kd_antrian == "" || $barang == "" || $jumlah == "" || $total == "") {
             $response = ['response'=>'negative','alert'=>'Lengkapi field'];
         }else{
@@ -41,11 +40,11 @@
                         $jumlah = $dta['jumlah'] + $jumlah;
                         $value = "jumlah='$jumlah'";
                         $insert = $trans->update("table_antrian",$value,"kd_barang_keluar = '$kd_barang_keluar' AND kd_barang",$barang,"?page=kasirTransaksi");
-                        header("location:PageAdmin.php?page=kasirTransaksi");
+                        header("location:pageManager.php?page=kasirTransaksi");
                     }else{
                         $value = "'$kd_antrian','$kd_barang_keluar','$barang','$jumlah','$total'";
                         $insert = $trans->insert("table_antrian",$value,"?page=kasirTransaksi");
-                        header("location:PageAdmin.php?page=kasirTransaksi");
+                        header("location:pageManager.php?page=kasirTransaksi");
                     }
                 }
             }
@@ -57,9 +56,6 @@
         $where    = "kd_antrian";
         $response = $trans->delete("table_antrian",$where,$id,"?page=kasirTransaksi");
     }
-
-
-
  ?>
 <div class="main-content">
     <div class="section__content section__content--p30">
@@ -221,7 +217,7 @@
                     <tbody>
                         <?php foreach($barangs as $brs){ ?>
                         <tr>
-                            <td><a href="pageAdmin.php?page=kasirTransaksi&getItem&id=<?php echo $brs['kd_barang'] ?>"><?php echo $brs['kd_barang'] ?></a></td>
+                            <td><a href="pageManager.php?page=kasirTransaksi&getItem&id=<?php echo $brs['kd_barang'] ?>"><?php echo $brs['kd_barang'] ?></a></td>
                             <td><?php echo $brs['nama_barang'] ?></td>
                             <td><?php echo $brs['harga_barang'] ?></td>
                             <td><?php echo $brs['stok_barang'] ?></td>
@@ -237,8 +233,6 @@
 <script src="vendor/jquery-3.2.1.min.js"></script>
 <script>
     $(document).ready(function(){
-
-
         $('#barang_nama').change(function(){
             var barang = $(this).val();
             $.ajax({

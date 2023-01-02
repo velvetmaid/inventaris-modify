@@ -7,7 +7,7 @@
 	$data     = $br->selectWhere($table,"kd_barang",$_GET['id']);
 	$getMerek = $br->select("table_jenis_barang");
 	$getDistr = $br->select("table_supplier");
-	$waktu    = date("Y-m-d");
+	// $waktu    = date("Y-m-d");
 	if (isset($_POST['getSimpan'])) {
 		$kode_barang  = $br->validateHtml($_POST['kode_barang']);
 		$nama_barang  = $br->validateHtml($_POST['nama_barang']);
@@ -24,12 +24,12 @@
 			 	$response = ['response'=>'negative','alert'=>'harga atau stok tidak boleh mines'];
 			}else{
 				if ($_FILES['foto']['name'] == "") {
-					$value = "kd_barang='$kode_barang',nama_barang='$nama_barang',kd_jenis_barang='$merek_barang',kd_supplier='$distributor',tanggal_masuk='$waktu',harga_barang='$harga',stok_barang='$stok',keterangan='$ket'";
+					$value = "kd_barang='$kode_barang',nama_barang='$nama_barang',kd_jenis_barang='$merek_barang',kd_supplier='$distributor',harga_barang='$harga',stok_barang='$stok',keterangan='$ket'";
 					$response = $br->update($table,$value,"kd_barang",$_GET['id'],"?page=viewBarang");
 				}else{
 					$response = $br->validateImage();
 					if ($response['types'] == "true") {
-						$value = "kd_barang='$kode_barang',nama_barang='$nama_barang',kd_jenis_barang='$merek_barang',kd_supplier='$distributor',tanggal_masuk='$waktu',harga_barang='$harga',stok_barang='$stok',keterangan='$ket',gambar='$response[image]'";
+						$value = "kd_barang='$kode_barang',nama_barang='$nama_barang',kd_jenis_barang='$merek_barang',kd_supplier='$distributor',harga_barang='$harga',stok_barang='$stok',keterangan='$ket',gambar='$response[image]'";
 						$response = $br->update($table,$value,"kd_barang",$_GET['id'],"?page=viewBarang");
 					}else{
 						$response = ['response'=>'negative','alert'=>'gambar error'];
@@ -57,7 +57,7 @@
                         				<div class="col-md-6">
                         					<div class="form-group">
 												<label for="">Kode barang</label>
-												<input type="text" class="form-control" name="kode_barang" value="<?php echo $data['kd_barang']; ?>" readonly>
+												<input type="text" style="font-weight: bold; color: red;" class="form-control" name="kode_barang" value="<?php echo $data['kd_barang']; ?>" readonly>
 											</div>
 											<div class="form-group">
 												<label for="">Nama barang</label>

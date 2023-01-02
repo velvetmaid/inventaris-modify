@@ -20,16 +20,16 @@
     }
 
     if (isset($_POST['getSave'])) {
-        $kode_merek = $me->validateHtml($_POST['kode_merek']);
+        $kd_jenis_barang = $me->validateHtml($_POST['kd_jenis_barang']);
         $merek      = $me->validateHtml($_POST['nama_jenis_barang']);
         $foto = $_FILES['foto'];
 
-        if ($kode_merek == "" || $merek == "") {
+        if ($kd_jenis_barang == "" || $merek == "") {
             $response = ['response'=>'negative','alert'=>'lengkapi field'];
         }else{
             $response = $me->validateImage();
             if ($response['types'] == "true") {
-                $value    = "'$kode_merek','$merek','$response[image]'";
+                $value    = "'$kd_jenis_barang','$merek','$response[image]'";
                 $response = $me->insert($table,$value,"?page=viewMerek");
             }
             
@@ -37,16 +37,16 @@
     }
 
     if (isset($_POST['getUpdate'])) {
-        $kode_merek = $me->validateHtml($_POST['kode_merek']);
+        $kd_jenis_barang = $me->validateHtml($_POST['kd_jenis_barang']);
         $merek      = $me->validateHtml($_POST['nama_jenis_barang']);
 
         if ($_FILES['foto']['name'] == "") {
-             $value    = "kd_jenis_barang='$kode_merek',merek='$merek'";
+             $value    = "kd_jenis_barang='$kd_jenis_barang',nama_jenis_barang='$merek'";
              $response = $me->update($table,$value,"kd_jenis_barang",$_GET['id'],"?page=viewMerek");
         }else{
             $response = $me->validateImage();
             if ($response['types'] == "true") {
-                $value = "kd_jenis_barang='$kode_merek',merek='$merek', foto_jenis_barang='$response[image]'";
+                $value = "kd_jenis_barang='$kd_jenis_barang',nama_jenis_barang='$merek', foto_jenis_barang='$response[image]'";
                 $response = $me->update($table,$value,"kd_jenis_barang",$_GET['id'],"?page=viewMerek");
             }else{
                 $response = ['response'=>'negative','alert'=>'Error Gambar'];
@@ -97,10 +97,10 @@
                                 <div class="form-group">
                                     <label for="">Kode Jenis Barang</label>
                                     <?php if(!isset($_GET['edit'])) : ?>
-                                    <input type="text" class="form-control form-control-sm" name="kode_merek" style="font-weight: bold; color: red;" value="<?php echo $autokode; ?>" readonly>
+                                    <input type="text" class="form-control form-control-sm" name="kd_jenis_barang" style="font-weight: bold; color: red;" value="<?php echo $autokode; ?>" readonly>
                                     <?php endif ?>
                                     <?php if(isset($_GET['edit'])) : ?>
-                                    <input type="text" class="form-control form-control-sm" name="kode_merek" style="font-weight: bold; color: red;" value="<?php echo @$editData['kd_jenis_barang']; ?>" readonly>
+                                    <input type="text" class="form-control form-control-sm" name="kd_jenis_barang" style="font-weight: bold; color: red;" value="<?php echo @$editData['kd_jenis_barang']; ?>" readonly>
                                     <?php endif ?>
 
                                 </div>
@@ -131,7 +131,7 @@
                     <div class="col-md-8">
                         <div class="card">
                         <div class="card-header">
-                            <strong class="card-title mb-3">Data Supplier</strong>
+                            <strong class="card-title mb-3">Data Jenis Barang</strong>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -156,7 +156,7 @@
                                             <td class="text-center">
                                                 <div class="btn-group">
                                                     <a data-toggle="tooltip" data-placement="top" title="Edit" href="?page=viewMerek&edit&id=<?= $ds['kd_jenis_barang'] ?>" class="btn btn-info"><i class="fa fa-edit"></i></a>
-                                                    <a data-toggle="tooltip" data-placement="top" title="Delete" href="#" class="btn btn-danger"><i class="fa fa-trash" id="btnDelete<?php echo $no; ?>" ></i></a>
+                                                    <!-- <a data-toggle="tooltip" data-placement="top" title="Delete" href="#" class="btn btn-danger"><i class="fa fa-trash" id="btnDelete<?php echo $no; ?>" ></i></a> -->
                                                 </div>
                                             </td>
                                        </tr>

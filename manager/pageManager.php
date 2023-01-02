@@ -132,11 +132,11 @@ if (isset($_GET['logout'])) {
                         <div class="header-wrap2">
                             <div class="logo d-block d-lg-none">
                                 <a href="#">
-                                    <img src="                     images/icon/logo.png" alt="Cool Admin" />
+                                    <img src="images/icon/logo.png" alt="Cool Admin" />
                                 </a>
                             </div>
                             <div class="header-button2">
-                                <div class="header-button-item js-item-menu">
+                                <!-- <div class="header-button-item js-item-menu">
                                     <i class="zmdi zmdi-search"></i>
                                     <div class="search-dropdown js-dropdown">
                                         <form action="">
@@ -146,7 +146,7 @@ if (isset($_GET['logout'])) {
                                             </span>
                                         </form>
                                     </div>
-                                </div>
+                                </div> -->
                                 <!-- <div class="header-button-item has-noti js-item-menu">
                                     <i class="zmdi zmdi-notifications"></i>
                                     <div class="notifi-dropdown js-dropdown">

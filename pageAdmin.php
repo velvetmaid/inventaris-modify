@@ -20,6 +20,26 @@ if (isset($_GET['logout'])) {
 <html>
 
 <head>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <link href="https://nightly.datatables.net/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+    <script src="https://nightly.datatables.net/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+    <link href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.colVis.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.colVis.min.js"></script>
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
+
     <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -28,7 +48,7 @@ if (isset($_GET['logout'])) {
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Staff</title>
+    <title>Atasan</title>
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
@@ -60,7 +80,7 @@ if (isset($_GET['logout'])) {
         <aside class="menu-sidebar2">
             <div class="logo">
                 <a href="#">
-                    <img src="                     images/icon/logo.png" alt="Cool Admin" />
+                    <img src="images/icon/logo.png" alt="Cool Admin" />
                 </a>
             </div>
             <div class="menu-sidebar2__content js-scrollbar1">
@@ -76,17 +96,32 @@ if (isset($_GET['logout'])) {
                             <a href="?page">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
-                        <li>
-                            <a href="?page=kasirTransaksi">
-                                <i class="fas fa-shopping-basket"></i>Barang Keluar</a>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fa fa-chevron-down"></i>Data Barang</a>
+                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                <li>
+                                    <a href="?page=kelBarang">Semua Barang</a>
+                                </li>
+                                <li>
+                                    <a href="?page=periode">Lihat Barang per Periode</a>
+                                </li>
+                                <li>
+                                    <a href="?page=barangHabis">Barang Habis</a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <a href="?page=viewBarang">
-                                <i class="fas fa-archive"></i>Barang</a>
+                                <i class="fas fa-archive"></i>Barang Masuk</a>
+                        </li>
+                        <li>
+                            <a href="?page=kelTransaksi">
+                                <i class="fas fa-shopping-basket"></i>Barang Keluar</a>
                         </li>
                         <li>
                             <a href="?page=viewDistributor">
-                                <i class="fas fa-users"></i>Supplier</a>
+                                <i class="fas fa-user"></i>Supplier</a>
                         </li>
                         <li>
                             <a href="?page=viewMerek">
@@ -98,17 +133,17 @@ if (isset($_GET['logout'])) {
         </aside>
 
         <div class="page-container2">
-            <header class="header-desktop2">
+            <header class="header-desktop2 hd">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="header-wrap2">
                             <div class="logo d-block d-lg-none">
                                 <a href="#">
-                                    <img src="                     images/icon/logo.png" alt="CoolAdmin" />
+                                    <img src="images/icon/logo.png" alt="CoolAdmin" />
                                 </a>
                             </div>
                             <div class="header-button2">
-                                <div class="header-button-item js-item-menu">
+                                <!-- <div class="header-button-item js-item-menu">
                                     <i class="zmdi zmdi-search"></i>
                                     <div class="search-dropdown js-dropdown">
                                         <form action="">
@@ -118,7 +153,7 @@ if (isset($_GET['logout'])) {
                                             </span>
                                         </form>
                                     </div>
-                                </div>
+                                </div> -->
                                 <!-- <div class="header-button-item has-noti js-item-menu">
                                     <i class="zmdi zmdi-notifications"></i>
                                     <div class="notifi-dropdown js-dropdown">
@@ -217,16 +252,16 @@ if (isset($_GET['logout'])) {
                                 </ul>
                             </li>
                             <li>
-                                <a href="?page=kasirTransaksi">
+                                <a href="?page=viewBarang">
+                                    <i class="fas fa-archive"></i>Barang Masuk</a>
+                            </li>
+                            <li>
+                                <a href="?page=kelTransaksi">
                                     <i class="fas fa-shopping-basket"></i>Barang Keluar</a>
                             </li>
                             <li>
-                                <a href="?page=viewBarang">
-                                    <i class="fas fa-archive"></i>Barang</a>
-                            </li>
-                            <li>
                                 <a href="?page=viewDistributor">
-                                    <i class="fas fa-users"></i>Supplier</a>
+                                    <i class="fas fa-user"></i>Supplier</a>
                             </li>
                             <li>
                                 <a href="?page=viewMerek">
@@ -253,8 +288,14 @@ if (isset($_GET['logout'])) {
                 case 'addBarang':
                     include "admin/addBarang.php";
                     break;
+                case 'addStokBarang':
+                    include "admin/addStokBarang.php";
+                    break;
                 case 'viewBarangDetail':
                     include "admin/viewBarangDetail.php";
+                    break;
+                case 'viewBarangDetail1':
+                    include "admin/viewBarangDetail1.php";
                     break;
                 case 'viewBarangEdit':
                     include "admin/viewBarangEdit.php";
